@@ -212,7 +212,7 @@ QUESTIONS = {
           ("신비로운 미래", "https://i.ibb.co/Kpnpgd3m/IMG-3976.png", "이 마법이 불러올 신비로운 미래")], "SN"),
         ("Q3. 마녀에게 잡힌 친구가 울고 있다. 너는?",
          [("냉철한 계획", "https://i.ibb.co/fGLNJxS6/IMG-0155.jpg", "냉철하게 탈출 계획을 세워준다"),
-          ("따뜻한 위로", "https://i.https://i.ibb.co/fGLNJxS6/IMG-0155.jpgibb.co/Z1Lfxznw/IMG-3911.png", "친구를 꽉 안아주며 위로해준다")], "TF"),
+          ("따뜻한 위로", "https://i.ibb.co/Z1Lfxznw/IMG-3911.png", "친구를 꽉 안아주며 위로해준다")], "TF"),
         ("Q4. 마법 주문을 외워야 한다면?",
          [("완벽한 암기", "https://i.ibb.co/1tHv7KKW/D95520-F2-6-DC3-4222-AE19-55-B51-A3-DCFE3.png", "주문서를 꼼꼼히 읽고 순서대로 외운다"),
           ("즉흥적인 감각", "https://i.ibb.co/V0xrkrMb/IMG-3982.jpg", "느낌이 오는 대로 즉흥적으로 외친다")], "JP"),
