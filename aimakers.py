@@ -36,7 +36,7 @@ THEMES = {
         "progress": "#4E342E"
     },
     "B": { # 발명의 작업실 
-        "bg_img": "url('https://i.ibb.co/pBWPnr23/IMG-4002.jpg')",
+        "bg_img": "url('https://plus.unsplash.com/premium_photo-1661434779070-cf8fc0e253ab?q=80&w=1172&auto=format&fit=crop')",
         "bg_gradient": "none",
         "block_bg": "rgba(13, 27, 42, 0.95)",
         "text_main": "#F8FCFF",
@@ -46,7 +46,7 @@ THEMES = {
         "progress": "#2F9AC2"
     },
     "C": { # 예술의 정원
-        "bg_img": "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.ibb.co/N2r7RTp1/IMG-4003.jpg')",
+        "bg_img": "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.pinimg.com/736x/87/92/45/879245aeacae5b771d2849930c4fa96c.jpg')",
         "bg_gradient": "none",
         "block_bg": "rgba(241, 248, 233, 0.95)",
         "text_main": "#1B5E20",
@@ -193,9 +193,9 @@ magic_data = {
 }
 
 CAT_INFO = {
-    "A": {"label": "A. 지혜의 서고",  "emoji": "📚", "ex":"📚 글을 읽거나 역사·사회 얘기를 할 때!","image": "tarot1.jpg"},
-    "B": {"label": "B. 발명의 작업실", "emoji": "⚙️", "ex":"⚙️ 과학 실험을 하거나 수학 문제를 풀 때!","image": "tarot2.jpg"},
-    "C": {"label": "C. 예술의 정원",  "emoji": "🎨", "ex":"🎨 그림 그리거나 음악·춤을 즐길 때!","image": "tarot3.jpg"},
+    "A": {"label": "A. 지혜의 서고",  "emoji": "📚", "ex":"📚 글을 읽거나 역사·사회 얘기를 할 때!","image": "https://i.ibb.co/tPN8RhDy/IMG-4001.jpg"},
+    "B": {"label": "B. 발명의 작업실", "emoji": "⚙️", "ex":"⚙️ 과학 실험을 하거나 수학 문제를 풀 때!","image": "https://i.ibb.co/pBWPnr23/IMG-4002.jpg"},
+    "C": {"label": "C. 예술의 정원",  "emoji": "🎨", "ex":"🎨 그림 그리거나 음악·춤을 즐길 때!","image": "https://i.ibb.co/N2r7RTp1/IMG-4003.jpg"},
 }
 
 # ─────────────────────────────────────────────
