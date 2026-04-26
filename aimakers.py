@@ -26,7 +26,7 @@ THEMES = {
         "progress": "#a855f7"
     },
     "A": { # 지혜의 서고
-        "bg_img": "url('https://i.ibb.co/tPN8RhDy/IMG-4001.jpg')",
+        "bg_img": "url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMjBfNTkg%2FMDAxNjY2MjYzNjEzODc1.6bB7jVJM22VH18FbqVUkvl9lbwsQOddk_qmaGQR_v1Ig.-JyIK3km2ZAkaY6suPlliHs3iHLcF12QsLcP-qjpCsgg.JPEG.goodsemedu%2FScreenshot_2022-10-20_at_19.59.24.JPG&type=sc960_832')",
         "bg_gradient": "none",
         "block_bg": "rgba(255, 250, 240, 0.95)",
         "text_main": "5D4037",
