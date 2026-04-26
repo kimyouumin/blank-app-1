@@ -226,7 +226,7 @@ QUESTIONS = {
           ("멋진 상상", "https://i.ibb.co/Mk6TcRJQ/D2-DB53-DE-CDC2-4-B32-85-A0-8-DF4-DF7-A376-D.png", "이 발명품이 바꿀 멋진 세상을 상상한다")], "SN"),
         ("Q3. 로봇이 슬픈 눈을 하고 쳐다본다면?",
          [("결함 수리", "https://i.ibb.co/dsg9zqqx/IMG-3919.png", "기계적 결함이 있는지 즉시 수리한다"),
-          ("마음 걱정", "https://i.ibb.co/dsg9zqqx/IMG", "로봇의 마음이 아픈 건 아닐지 걱정한다")], "TF"),
+          ("마음 걱정", "https://i.ibb.co/tw4W1W1s/IMG-3920.png", "로봇의 마음이 아픈 건 아닐지 걱정한다")], "TF"),
         ("Q4. 중요한 실험을 앞두고 너는?",
          [("단계별 정리", "https://i.ibb.co/v4GZV4LL/IMG-3975.png", "실험 단계를 1번부터 10번까지 정리한다"),
           ("일단 실행", "https://i.ibb.co/4g3qw91r/IMG-3990.jpg", "일단 버튼을 누르며 직접 배워본다")], "JP"),
