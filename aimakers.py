@@ -46,7 +46,7 @@ THEMES = {
         "progress": "#2F9AC2"
     },
     "C": { # 예술의 정원
-        "bg_img": "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.pinimg.com/736x/e0/66/19/e066192aa56ec15c7bb89cdd98858792.jpg')",
+        "bg_img": "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.pinimg.com/1200x/28/0c/9f/280c9f73f62a4e4e0bceaae4a7248cfb.jpg')",
         "bg_gradient": "none",
         "block_bg": "rgba(241, 248, 233, 0.95)",
         "text_main": "#1B5E20",
