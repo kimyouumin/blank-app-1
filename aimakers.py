@@ -405,7 +405,7 @@ elif st.session_state.step == "result":
 
     # ── 계열 이미지 출력
     try:
-        img_map = {"A": "tarot1.jpg", "B": "tarot2.jpg", "C": "tarot3.jpg"}
+        img_map = {"A": "https://i.ibb.co/tPN8RhDy/IMG-4001.jpg", "": "https://i.ibb.co/pBWPnr23/IMG-4002.jpg", "C": "https://i.ibb.co/N2r7RTp1/IMG-4003.jpg"}
         c1, c2, c3 = st.columns([1, 2, 1])
         with c2:
             st.image(img_map[cat], use_container_width=True, caption=CAT_INFO[cat]["label"])
