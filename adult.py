@@ -1,7 +1,13 @@
 import streamlit as st
 # Custom CSS
 
-
+# BG_첫걸음 = """ -> 이 부분 수정하시면 돼요!!
+# <style>
+# .stApp {
+#    background-color: 
+#    backeground-image:}
+# }
+# </style>
 
 
 # 키워드 데이터
