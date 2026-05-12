@@ -21,7 +21,7 @@ nouns_data = {
         "bg_img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000" # 가능성 배경 
     },
     "청춘": {
-        "image": "https://i.ibb.co/DPg6LB5C/IMG-0191.png", 
+        "image": "https://i.ibb.co/wZK1vBMq/IMG-0192.png", 
         "color": "rgba(255, 228, 230, 0.9)", # 연분홍 보드
         "bg_img": "https://i.ibb.co/XZdyVkRs/0-E1-BEFDC-5578-444-C-8288-F80-DB270-C158.png" # 청춘 배경 
     },
