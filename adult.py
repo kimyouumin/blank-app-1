@@ -1,7 +1,6 @@
 import streamlit as st
 
 # --- 1. 데이터 및 초기 설정 ---
-# (기존 코드와 동일)
 adj_words_list = [
     "빛나는", "뜨거운", "행복한", "찬란한", "설레는", "특별한",
     "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
@@ -43,7 +42,6 @@ def go(page):
 
 # --- 2. CSS 스타일 모음 ---
 
-# [수정] 감성적인 바탕 및 폰트 설정을 위한 전역 CSS
 def apply_font():
     st.markdown("""
         <style>
@@ -54,7 +52,6 @@ def apply_font():
         </style>
     """, unsafe_allow_html=True)
 
-# [추가] 시작 화면 전용 다크 테마 CSS
 def apply_home_css():
     apply_font()
     st.markdown("""
@@ -62,16 +59,6 @@ def apply_home_css():
         .stApp { 
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             color: #E2E8F0;
-        }
-        
-        /* 헤더(로고/네비게이션) 스타일 가짜 구현 */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0 60px 0;
-            color: #94A3B8;
-            font-size: 14px;
-            letter-spacing: 1px;
         }
         
         /* 텍스트 타이포그래피 */
@@ -93,7 +80,7 @@ def apply_home_css():
             background-color: transparent !important;
             border: 1px solid #475569 !important;
             color: #F8FAFC !important;
-            border-radius: 0px !important; /* 네모난 버튼 */
+            border-radius: 0px !important; 
             padding: 10px 30px !important;
             width: auto;
             transition: 0.3s;
@@ -103,6 +90,12 @@ def apply_home_css():
             background-color: rgba(255,255,255,0.1) !important;
         }
         
+        /* 입력창 라벨 텍스트 색상(흰색) 변경 */
+        div[data-testid="stTextInput"] label p {
+            color: #FFFFFF !important;
+            font-size: 15px;
+        }
+
         /* 입력창 스타일링 */
         div[data-testid="stTextInput"] input {
             background-color: rgba(0,0,0,0.2);
@@ -114,7 +107,6 @@ def apply_home_css():
         </style>
     """, unsafe_allow_html=True)
 
-# [수정] 단어 선택 페이지는 다시 밝은 배경으로
 def apply_global_css():
     apply_font()
     st.markdown("<style>.stApp { background: #FAFAFA; color: #333; }</style>", unsafe_allow_html=True)
@@ -191,24 +183,11 @@ def apply_result_css(board_color, bg_url):
 if st.session_state.page == "home":
     apply_home_css()
     
-    # 상단 네비게이션 가짜 UI (디테일)
-    st.markdown("""
-        <div class="top-nav">
-            <div style="font-size: 20px; color: white;">BISANG</div>
-            <div style="display: flex; gap: 30px;">
-                <span>INTRO</span>
-                <span>TEST</span>
-                <span style="border-bottom: 1px solid white; color: white;">KEYWORD</span>
-                <span>DESIGN</span>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # 본문 레이아웃 2단 분할
+    # 본문 레이아웃 2단 분할 (상단 여백 추가)
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
     col1, spacer, col2 = st.columns([1, 0.2, 1])
     
     with col1:
-        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("<div class='sub-title'>성년의 날, 나에게 전하는 한 문장</div>", unsafe_allow_html=True)
         st.markdown("<div class='main-title'>나의 키워드</div>", unsafe_allow_html=True)
         st.markdown("""
@@ -219,7 +198,6 @@ if st.session_state.page == "home":
             </div>
         """, unsafe_allow_html=True)
         
-        # 이름 입력란 (검사하기 대신 이름 입력으로 유도)
         name = st.text_input("당신의 이름을 알려주세요 (Enter)", value=st.session_state.name)
         st.markdown("<br>", unsafe_allow_html=True)
         
@@ -241,14 +219,12 @@ if st.session_state.page == "home":
             </div>
         """, unsafe_allow_html=True)
         
-        # 오른쪽 이미지 (책갈피 이미지 임시 URL - 가지고 계신 파일명으로 변경하세요)
-        # 예: st.image("bookmark_image.png")
+        # 오른쪽 이미지 (책갈피 이미지 임시 URL)
         st.image("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop", use_column_width=True)
 
 elif st.session_state.page == "adj":
     apply_global_css()
     apply_floating_css()
-    # (이하 기존 코드 동일)
     st.title("단어를 골라주세요 ✨")
     st.write("---")
     cols = st.columns(3)
@@ -263,7 +239,6 @@ elif st.session_state.page == "adj":
 elif st.session_state.page == "noun":
     apply_global_css()
     apply_floating_css()
-    # (이하 기존 코드 동일)
     st.title("단어를 골라주세요 ✨")
     st.write("---")
     n_cols = st.columns(2)
