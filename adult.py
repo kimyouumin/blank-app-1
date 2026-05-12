@@ -26,7 +26,7 @@ nouns_data = {
         "bg_img": "https://i.ibb.co/XZdyVkRs/0-E1-BEFDC-5578-444-C-8288-F80-DB270-C158.png" # 청춘 배경 
     },
     "비행": {
-        "image": "rose4.png", 
+        "image": "https://i.ibb.co/nqXqPQp9/IMG-0196.png", 
         "color": "rgba(225, 245, 254, 0.9)", # 하늘색 보드
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png" # 날개 배경
     },
