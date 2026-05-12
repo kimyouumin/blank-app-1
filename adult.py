@@ -1,14 +1,15 @@
-import streamlit as st  # <-- 1. NameError를 해결하는 필수 코드
+import streamlit as st  
 
-if "page" not in st.sessinon_state:
-    st.session_state.page="새로 피는 페이지"
+# 오타 수정 (sessinon -> session) 및 초기 페이지를 "adj"로 설정하여 바로 화면이 보이게 합니다.
+if "page" not in st.session_state:
+    st.session_state.page = "adj" 
     
-# (선택) 페이지 이동을 위한 go() 함수가 다른 곳에 없다면 이 코드가 필요합니다.
+# 페이지 이동을 위한 go() 함수
 def go(page_name):
     st.session_state.page = page_name
     st.rerun()
 
-# 2. 대문자 'If'를 소문자 'if'로 수정
+# 조건문 시작
 if st.session_state.page == "adj":
     # --- 1. 배경 및 버튼 스타일 커스텀 ---
     st.markdown("""
@@ -86,3 +87,5 @@ if st.session_state.page == "adj":
     st.write("---")
     if st.button("← 뒤로"):
         go("home")
+
+
