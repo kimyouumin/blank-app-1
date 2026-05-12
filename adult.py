@@ -23,12 +23,12 @@ nouns_data = {
     "청춘": {
         "image": "rose3.png", 
         "color": "rgba(255, 228, 230, 0.9)", # 연분홍 보드
-        "bg_img": "https://i.ibb.co/5xgWxtrk/IMG-0187.jpg" # 청춘 배경 
+        "bg_img": "https://i.ibb.co/XZdyVkRs/0-E1-BEFDC-5578-444-C-8288-F80-DB270-C158.png" # 청춘 배경 
     },
     "비행": {
         "image": "rose4.png", 
         "color": "rgba(225, 245, 254, 0.9)", # 하늘색 보드
-        "bg_img": "https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?q=80&w=2000" # 날개 배경
+        "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png" # 날개 배경
     },
 }
 
