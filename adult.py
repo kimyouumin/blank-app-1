@@ -1,6 +1,6 @@
-import streamlit as st  # 소문자로 수정
+import streamlit as st
 
-# --- 1. 배경 및 스타일 정의 (BG_첫걸음 정의 추가) ---
+# --- 1. 배경 및 스타일 정의 ---
 BG_첫걸음 = """
 <style>
 .stApp {
@@ -10,7 +10,12 @@ BG_첫걸음 = """
 """
 
 # --- 2. 데이터 및 초기 설정 ---
-adj_words_list = ["빛나는", "뜨거운", "행복한", "찬란한", "설레는", "특별한","푸르른","나만의","성장의","무한한","눈부신","새로운"]
+# 추가된 형용사들을 포함한 리스트 (총 12개)
+adj_words_list = [
+    "빛나는", "뜨거운", "행복한", "찬란한", "설레는", "특별한",
+    "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
+]
+
 nouns = ["첫걸음", "가능성", "청춘", "날개"]
 nouns_data = {
     "첫걸음": {"image": "rose1.png", "bg": BG_첫걸음},
@@ -30,7 +35,7 @@ def go(page):
     st.session_state.page = page
     st.rerun()
 
-# --- 3. 공통 애니메이션 CSS (버튼이 있는 페이지에 적용) ---
+# --- 3. 공통 애니메이션 CSS ---
 def apply_floating_css():
     st.markdown("""
         <style>
@@ -40,18 +45,18 @@ def apply_floating_css():
             100% { transform: translateY(0px); }
         }
         div.stButton { animation: floating 3s ease-in-out infinite; }
-        div[data-testid="column"]:nth-child(1) div.stButton { animation-delay: 0.0s; }
-        div[data-testid="column"]:nth-child(2) div.stButton { animation-delay: 0.5s; }
-        div[data-testid="column"]:nth-child(3) div.stButton { animation-delay: 1.0s; }
-        div[data-testid="column"]:nth-child(4) div.stButton { animation-delay: 1.5s; }
+        
+        /* 컬럼별 엇박자 애니메이션 효과 */
+        div[data-testid="column"]:nth-child(odd) div.stButton { animation-delay: 0.0s; }
+        div[data-testid="column"]:nth-child(even) div.stButton { animation-delay: 0.5s; }
 
         div.stButton > button {
             background-color: transparent !important;
             border: 2px solid #FFD700 !important;
             border-radius: 20px;
-            font-size: 22px !important;
+            font-size: 20px !important;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 10px 15px;
             transition: all 0.3s ease;
             width: 100%;
         }
@@ -75,40 +80,65 @@ if st.session_state.page == "home":
             st.session_state.name = name.strip()
             go("adj")
 
-# [형용사 선택 - 애니메이션 및 레이아웃 적용]
+# [형용사 선택 - 12개 단어 배치]
 elif st.session_state.page == "adj":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
     st.write("---")
 
-    # 6개 단어를 흩어지게 배치 (2-2-2 구조)
-    row1_c1, row1_c2, row1_c3, row1_c4 = st.columns([1, 2, 1, 2])
-    with row1_c2:
+    # --- 첫 번째 줄 (3개) ---
+    r1_c1, r1_c2, r1_c3 = st.columns([2, 1, 2])
+    with r1_c1:
         if st.button(adj_words_list[0]): # 빛나는
             st.session_state.adj = adj_words_list[0]; go("noun")
-    with row1_c4:
-        if st.button(adj_words_list[1]): # 따뜻한
+    with r1_c2:
+        if st.button(adj_words_list[1]): # 뜨거운
             st.session_state.adj = adj_words_list[1]; go("noun")
-
-    st.write("") 
-
-    row2_c1, row2_c2, row2_c3 = st.columns([1, 2, 1])
-    with row2_c2:
+    with r1_c3:
         if st.button(adj_words_list[2]): # 행복한
             st.session_state.adj = adj_words_list[2]; go("noun")
 
-    st.write("")
+    st.write("") # 간격
 
-    row3_c1, row3_c2, row3_c3, row3_c4 = st.columns([2, 1, 1, 2])
-    with row3_c1:
+    # --- 두 번째 줄 (3개) ---
+    r2_c1, r2_c2, r2_c3, r2_c4 = st.columns([1, 2, 2, 1])
+    with r2_c2:
         if st.button(adj_words_list[3]): # 찬란한
             st.session_state.adj = adj_words_list[3]; go("noun")
-    with row3_c3:
+    with r2_c3:
         if st.button(adj_words_list[4]): # 설레는
             st.session_state.adj = adj_words_list[4]; go("noun")
-    with row3_c4:
-        if st.button(adj_words_list[5]): # 특별한
+    with r2_c1: # 특별한 (살짝 왼쪽)
+        if st.button(adj_words_list[5]): 
             st.session_state.adj = adj_words_list[5]; go("noun")
+
+    st.write("") 
+
+    # --- 세 번째 줄 (3개) ---
+    r3_c1, r3_c2, r3_c3 = st.columns([1, 1, 1])
+    with r3_c1:
+        if st.button(adj_words_list[6]): # 푸르른
+            st.session_state.adj = adj_words_list[6]; go("noun")
+    with r3_c2:
+        if st.button(adj_words_list[7]): # 나만의
+            st.session_state.adj = adj_words_list[7]; go("noun")
+    with r3_c3:
+        if st.button(adj_words_list[8]): # 성장의
+            st.session_state.adj = adj_words_list[8]; go("noun")
+
+    st.write("")
+
+    # --- 네 번째 줄 (3개) ---
+    r4_c1, r4_c2, r4_c3, r4_c4 = st.columns([2, 1, 1, 2])
+    with r4_c1:
+        if st.button(adj_words_list[9]): # 무한한
+            st.session_state.adj = adj_words_list[9]; go("noun")
+    with r4_c3:
+        if st.button(adj_words_list[10]): # 눈부신
+            st.session_state.adj = adj_words_list[10]; go("noun")
+    with r4_c4:
+        if st.button(adj_words_list[11]): # 새로운
+            st.session_state.adj = adj_words_list[11]; go("noun")
 
     st.write("---")
     if st.button("← 뒤로"):
@@ -119,7 +149,6 @@ elif st.session_state.page == "noun":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
     
-    # 명사들도 2x2로 배치
     n_c1, n_c2 = st.columns(2)
     for i, noun in enumerate(nouns):
         with (n_c1 if i % 2 == 0 else n_c2):
@@ -136,7 +165,6 @@ elif st.session_state.page == "result":
     data = nouns_data[st.session_state.noun]
     st.markdown(data["bg"], unsafe_allow_html=True)
     
-    # 이미지가 없을 경우 에러 방지
     try:
         st.image(data["image"])
     except:
@@ -149,3 +177,4 @@ elif st.session_state.page == "result":
         for key, val in defaults.items():
             st.session_state[key] = val
         go("home")
+
