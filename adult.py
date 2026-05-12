@@ -68,7 +68,7 @@ def apply_floating_css():
         </style>
     """, unsafe_allow_html=True)
 
-# [결과 화면용] 배경 이미지 + 동적 색상 플로팅 보드
+# [결과 화면용] 배경 이미지 + 동적 색상 플로팅 보드 + 하얀색 버튼
 def apply_result_css(board_color):
     st.markdown(f"""
         <style>
@@ -87,21 +87,25 @@ def apply_result_css(board_color):
             margin-top: 80px;
             text-align: center; 
         }}
+        
+        /* '처음부터' 버튼 스타일 - 하얀색으로 변경 */
         div.stButton > button {{
-            background-color: #FFB6C1 !important;
-            border: none !important;
+            background-color: #ffffff !important; /* 하얀색 배경 */
+            border: 1px solid #eeeeee !important; /* 연한 테두리 추가 */
             border-radius: 20px;
-            color: #fff !important;
+            color: #333333 !important; /* 어두운 글자색 */
             font-size: 20px !important;
             font-weight: bold;
             padding: 10px 20px;
             transition: all 0.3s ease;
             margin-top: 20px;
             width: 100%;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
         }}
         div.stButton > button:hover {{
-            background-color: #FF69B4 !important;
-            transform: scale(1.05);
+            background-color: #f9f9f9 !important; /* 살짝 회색빛 도는 하얀색으로 변경 */
+            transform: scale(1.02);
+            border-color: #cccccc !important;
         }}
         </style>
     """, unsafe_allow_html=True)
@@ -109,17 +113,15 @@ def apply_result_css(board_color):
 
 # --- 3. 페이지별 화면 구성 ---
 
-# [홈 화면] - 애니메이션 효과 없음
+# [홈 화면]
 if st.session_state.page == "home":
-    apply_global_css() # 기본 배경색만 적용
+    apply_global_css()
     st.title("📖 새로운 페이지 📖")
     st.write("---")
     
-    # 입력창과 버튼을 중앙으로 모으기 위해 컬럼 사용
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         name = st.text_input("이름을 입력해주세요", value=st.session_state.name)
-        # 일반적인 스트림릿 버튼 (애니메이션/테두리 없음)
         if st.button("입장하기", use_container_width=True):
             if not name.strip():
                 st.warning("이름을 입력해주세요!")
@@ -127,7 +129,7 @@ if st.session_state.page == "home":
                 st.session_state.name = name.strip()
                 go("adj")
 
-# [형용사 선택] - 애니메이션 효과 적용
+# [형용사 선택]
 elif st.session_state.page == "adj":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
@@ -144,7 +146,7 @@ elif st.session_state.page == "adj":
     if st.button("← 뒤로"):
         go("home")
 
-# [명사 선택] - 애니메이션 효과 적용
+# [명사 선택]
 elif st.session_state.page == "noun":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
@@ -177,7 +179,9 @@ elif st.session_state.page == "result":
     st.title("🌹 당신을 위한 한 마디 🌹")
     st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
     
+    # 이 버튼이 하얀색 스타일로 나타납니다.
     if st.button("🔄 처음부터"):
         for key, val in defaults.items():
             st.session_state[key] = val
         go("home")
+
