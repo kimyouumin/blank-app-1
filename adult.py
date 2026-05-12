@@ -6,17 +6,33 @@ adj_words_list = [
     "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
 ]
 
-nouns = ["첫걸음", "가능성", "청춘", "날개"]
+nouns = ["첫걸음", "가능성", "청춘", "비행"]
 
-# 명사별 이미지와 플로팅 보드 배경색
+# [수정포인트 1] bg_img 항목을 추가하여 단어별 배경 이미지 URL을 넣습니다.
 nouns_data = {
-    "첫걸음": {"image": "rose1.png", "color": "rgba(255, 249, 196, 0.9)"}, # 연노란색
-    "가능성": {"image": "rose2.png", "color": "rgba(255, 255, 240, 0.9)"}, # 아이보리
-    "청춘": {"image": "rose3.png", "color": "rgba(255, 228, 230, 0.9)"},   # 연분홍색
-    "날개": {"image": "rose4.png", "color": "rgba(225, 245, 254, 0.9)"},   # 하늘색
+    "첫걸음": {
+        "image": "rose1.png", 
+        "color": "rgba(255, 249, 196, 0.9)", # 연노랑 보드
+        "bg_img": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000" # 첫걸음 배경
+    },
+    "가능성": {
+        "image": "rose2.png", 
+        "color": "rgba(255, 255, 240, 0.9)", # 아이보리 보드
+        "bg_img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000" # 가능성 배경 
+    },
+    "청춘": {
+        "image": "rose3.png", 
+        "color": "rgba(255, 228, 230, 0.9)", # 연분홍 보드
+        "bg_img": "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?q=80&w=2000" # 청춘 배경 
+    },
+    "날개": {
+        "image": "rose4.png", 
+        "color": "rgba(225, 245, 254, 0.9)", # 하늘색 보드
+        "bg_img": "https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?q=80&w=2000" # 날개 배경
+    },
 }
 
-# session_state 초기화
+# session_state 초기값 설정
 defaults = {"page": "home", "name": "", "adj": "", "noun": ""}
 for key, val in defaults.items():
     if key not in st.session_state:
@@ -29,15 +45,9 @@ def go(page):
 
 # --- 2. CSS 스타일 모음 ---
 
-# [공통] 전체 배경색 설정
 def apply_global_css():
-    st.markdown("""
-        <style>
-        .stApp { background-color: #FAFAFA; }
-        </style>
-    """, unsafe_allow_html=True)
+    st.markdown("<style>.stApp { background-color: #FAFAFA; }</style>", unsafe_allow_html=True)
 
-# [단어 선택 화면용] 둥둥 떠다니는 금색 테두리 버튼
 def apply_floating_css():
     st.markdown("""
         <style>
@@ -68,12 +78,12 @@ def apply_floating_css():
         </style>
     """, unsafe_allow_html=True)
 
-# [결과 화면용] 배경 이미지 + 동적 색상 플로팅 보드 + 하얀색 버튼
-def apply_result_css(board_color):
+# [수정포인트 2] bg_url 매개변수를 추가하여 배경 이미지를 동적으로 받습니다.
+def apply_result_css(board_color, bg_url):
     st.markdown(f"""
         <style>
         .stApp {{
-            background-image: url("https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2000"); 
+            background-image: url("{bg_url}"); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -87,25 +97,21 @@ def apply_result_css(board_color):
             margin-top: 80px;
             text-align: center; 
         }}
-        
-        /* '처음부터' 버튼 스타일 - 하얀색으로 변경 */
         div.stButton > button {{
-            background-color: #ffffff !important; /* 하얀색 배경 */
-            border: 1px solid #eeeeee !important; /* 연한 테두리 추가 */
+            background-color: #ffffff !important;
+            border: 1px solid #eeeeee !important;
             border-radius: 20px;
-            color: #333333 !important; /* 어두운 글자색 */
+            color: #333333 !important;
             font-size: 20px !important;
             font-weight: bold;
             padding: 10px 20px;
             transition: all 0.3s ease;
             margin-top: 20px;
             width: 100%;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
         }}
         div.stButton > button:hover {{
-            background-color: #f9f9f9 !important; /* 살짝 회색빛 도는 하얀색으로 변경 */
+            background-color: #f9f9f9 !important;
             transform: scale(1.02);
-            border-color: #cccccc !important;
         }}
         </style>
     """, unsafe_allow_html=True)
@@ -113,75 +119,59 @@ def apply_result_css(board_color):
 
 # --- 3. 페이지별 화면 구성 ---
 
-# [홈 화면]
 if st.session_state.page == "home":
     apply_global_css()
     st.title("📖 새로운 페이지 📖")
     st.write("---")
-    
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         name = st.text_input("이름을 입력해주세요", value=st.session_state.name)
         if st.button("입장하기", use_container_width=True):
-            if not name.strip():
-                st.warning("이름을 입력해주세요!")
+            if not name.strip(): st.warning("이름을 입력해주세요!")
             else:
                 st.session_state.name = name.strip()
                 go("adj")
 
-# [형용사 선택]
 elif st.session_state.page == "adj":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
     st.write("---")
-
     cols = st.columns(3)
     for i, adj in enumerate(adj_words_list):
         with cols[i % 3]:
             if st.button(adj, use_container_width=True): 
                 st.session_state.adj = adj
                 go("noun")
-
     st.write("---")
-    if st.button("← 뒤로"):
-        go("home")
+    if st.button("← 뒤로"): go("home")
 
-# [명사 선택]
 elif st.session_state.page == "noun":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
     st.write("---")
-    
     n_cols = st.columns(2)
     for i, noun in enumerate(nouns):
         with n_cols[i % 2]:
             if st.button(noun, use_container_width=True):
                 st.session_state.noun = noun
                 go("result")
-                
     st.write("---")
-    if st.button("← 뒤로"):
-        go("adj")
+    if st.button("← 뒤로"): go("adj")
 
-# [결과 화면]
 elif st.session_state.page == "result":
+    # [수정포인트 3] 선택된 명사의 데이터를 가져와서 보드 색상과 배경 URL을 함께 전달합니다.
     data = nouns_data[st.session_state.noun]
-    apply_result_css(data["color"])
+    apply_result_css(data["color"], data["bg_img"])
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        try:
-            st.image(data["image"], use_column_width=True)
-        except:
-            st.info("이미지 파일을 찾을 수 없습니다.")
+        try: st.image(data["image"], use_column_width=True)
+        except: st.info("이미지 파일을 찾을 수 없습니다.")
             
     st.markdown("<br>", unsafe_allow_html=True)
     st.title("🌹 당신을 위한 한 마디 🌹")
     st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
     
-    # 이 버튼이 하얀색 스타일로 나타납니다.
     if st.button("🔄 처음부터"):
-        for key, val in defaults.items():
-            st.session_state[key] = val
+        for key, val in defaults.items(): st.session_state[key] = val
         go("home")
-
