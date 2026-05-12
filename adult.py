@@ -23,7 +23,7 @@ nouns_data = {
     "청춘": {
         "image": "rose3.png", 
         "color": "rgba(255, 228, 230, 0.9)", # 연분홍 보드
-        "bg_img": "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?q=80&w=2000" # 청춘 배경 
+        "bg_img": "https://pin.it/17EU8Xgt3" # 청춘 배경 
     },
     "날개": {
         "image": "rose4.png", 
