@@ -1,4 +1,4 @@
-elif st.session_state.page == "adj":
+if st.session_state.page == "adj":
     # --- 1. 배경 및 버튼 스타일 커스텀 ---
     st.markdown("""
         <style>
