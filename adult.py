@@ -17,7 +17,7 @@ nouns_data = {
     "가능성": {
         "image": "rose2.png", 
         "color": "rgba(255, 255, 240, 0.9)",
-        "bg_img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000"
+        "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
         "image": "https://i.ibb.co/V0PyhcPB/26-A0-FA28-19-BD-419-A-B1-FF-A4-A017-A58-B2-B.jpg",
