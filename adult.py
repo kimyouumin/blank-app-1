@@ -12,7 +12,7 @@ nouns_data = {
     "첫걸음": {
         "image": "rose1.png", 
         "color": "rgba(255, 249, 196, 0.9)",
-        "bg_img": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000"
+        "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "가능성": {
         "image": "rose2.png", 
