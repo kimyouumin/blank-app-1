@@ -1,5 +1,8 @@
 import streamlit as st  # <-- 1. NameError를 해결하는 필수 코드
 
+if "page" not in st.sessinon_state:
+    st.session_state.page="새로 피는 페이지"
+    
 # (선택) 페이지 이동을 위한 go() 함수가 다른 곳에 없다면 이 코드가 필요합니다.
 def go(page_name):
     st.session_state.page = page_name
