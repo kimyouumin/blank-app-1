@@ -8,7 +8,7 @@ adj_words_list = [
 
 nouns = ["첫걸음", "가능성", "청춘", "날개"]
 
-# 명사별 이미지와 플로팅 보드 배경색(반투명 파스텔톤) 지정
+# 명사별 이미지와 플로팅 보드 배경색
 nouns_data = {
     "첫걸음": {"image": "rose1.png", "color": "rgba(255, 249, 196, 0.9)"}, # 연노란색
     "가능성": {"image": "rose2.png", "color": "rgba(255, 255, 240, 0.9)"}, # 아이보리
@@ -29,12 +29,18 @@ def go(page):
 
 # --- 2. CSS 스타일 모음 ---
 
-# 단어 선택 화면용 CSS (기존의 둥둥 떠다니는 버튼)
-def apply_floating_css():
+# [공통] 전체 배경색 설정
+def apply_global_css():
     st.markdown("""
         <style>
         .stApp { background-color: #FAFAFA; }
-        
+        </style>
+    """, unsafe_allow_html=True)
+
+# [단어 선택 화면용] 둥둥 떠다니는 금색 테두리 버튼
+def apply_floating_css():
+    st.markdown("""
+        <style>
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -62,19 +68,16 @@ def apply_floating_css():
         </style>
     """, unsafe_allow_html=True)
 
-# 결과 화면용 CSS (보드 색상을 변수로 받아 동적으로 적용)
+# [결과 화면용] 배경 이미지 + 동적 색상 플로팅 보드
 def apply_result_css(board_color):
     st.markdown(f"""
         <style>
-        /* 1. 전체 배경 설정 (원하는 배경 이미지 URL로 변경하세요) */
         .stApp {{
             background-image: url("https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2000"); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }}
-        
-        /* 2. 동적 색상이 적용된 플로팅 보드 (중앙 카드) */
         .block-container {{
             background-color: {board_color};
             border-radius: 30px;
@@ -84,10 +87,8 @@ def apply_result_css(board_color):
             margin-top: 80px;
             text-align: center; 
         }}
-
-        /* 3. 결과 화면용 버튼 스타일 */
         div.stButton > button {{
-            background-color: #FFB6C1 !important; /* 진한 핑크색 버튼 */
+            background-color: #FFB6C1 !important;
             border: none !important;
             border-radius: 20px;
             color: #fff !important;
@@ -108,19 +109,25 @@ def apply_result_css(board_color):
 
 # --- 3. 페이지별 화면 구성 ---
 
-# [홈 화면]
+# [홈 화면] - 애니메이션 효과 없음
 if st.session_state.page == "home":
-    apply_floating_css()
+    apply_global_css() # 기본 배경색만 적용
     st.title("📖 새로운 페이지 📖")
-    name = st.text_input("이름을 입력해주세요", value=st.session_state.name)
-    if st.button("입장하기"):
-        if not name.strip():
-            st.warning("이름을 입력해주세요!")
-        else:
-            st.session_state.name = name.strip()
-            go("adj")
+    st.write("---")
+    
+    # 입력창과 버튼을 중앙으로 모으기 위해 컬럼 사용
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        name = st.text_input("이름을 입력해주세요", value=st.session_state.name)
+        # 일반적인 스트림릿 버튼 (애니메이션/테두리 없음)
+        if st.button("입장하기", use_container_width=True):
+            if not name.strip():
+                st.warning("이름을 입력해주세요!")
+            else:
+                st.session_state.name = name.strip()
+                go("adj")
 
-# [형용사 선택]
+# [형용사 선택] - 애니메이션 효과 적용
 elif st.session_state.page == "adj":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
@@ -137,7 +144,7 @@ elif st.session_state.page == "adj":
     if st.button("← 뒤로"):
         go("home")
 
-# [명사 선택]
+# [명사 선택] - 애니메이션 효과 적용
 elif st.session_state.page == "noun":
     apply_floating_css()
     st.title("단어를 골라주세요 ✨")
@@ -154,15 +161,11 @@ elif st.session_state.page == "noun":
     if st.button("← 뒤로"):
         go("adj")
 
-# [결과 화면 - 선택한 명사에 맞춰 동적 색상 적용]
+# [결과 화면]
 elif st.session_state.page == "result":
-    # 1) 선택한 명사의 데이터(이미지, 색상) 가져오기
     data = nouns_data[st.session_state.noun]
-    
-    # 2) 가져온 색상값을 CSS 함수에 전달
     apply_result_css(data["color"])
     
-    # 3) 콘텐츠 배치
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         try:
@@ -170,7 +173,7 @@ elif st.session_state.page == "result":
         except:
             st.info("이미지 파일을 찾을 수 없습니다.")
             
-    st.markdown("<br>", unsafe_allow_html=True) # 줄바꿈 간격
+    st.markdown("<br>", unsafe_allow_html=True)
     st.title("🌹 당신을 위한 한 마디 🌹")
     st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
     
