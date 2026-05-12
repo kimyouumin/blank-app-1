@@ -1,3 +1,11 @@
+import streamlit as st  # <-- 1. NameError를 해결하는 필수 코드
+
+# (선택) 페이지 이동을 위한 go() 함수가 다른 곳에 없다면 이 코드가 필요합니다.
+def go(page_name):
+    st.session_state.page = page_name
+    st.rerun()
+
+# 2. 대문자 'If'를 소문자 'if'로 수정
 if st.session_state.page == "adj":
     # --- 1. 배경 및 버튼 스타일 커스텀 ---
     st.markdown("""
