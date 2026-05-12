@@ -16,7 +16,7 @@ nouns_data = {
         "bg_img": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000" # 첫걸음 배경
     },
     "가능성": {
-        "image": "rose2.png", 
+        "image": "https://i.ibb.co/DPg6LB5C/IMG-0191.png", 
         "color": "rgba(255, 255, 240, 0.9)", # 아이보리 보드
         "bg_img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000" # 가능성 배경 
     },
