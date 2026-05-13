@@ -300,7 +300,7 @@ def render_home_page():
                 당신의 이야기도 언젠가 아름답게 피어날 거에요."
             </div>
         """, unsafe_allow_html=True)
-        st.image("https://i.ibb.co/zTxK90QJ/IMG-0203.jpg", use_container_width=True)
+        st.image("https://i.ibb.co/zTxK90QJ/IMG-0203.jpg", width=400)
 
 def render_adj_page():
     apply_adj_css()
