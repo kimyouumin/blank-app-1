@@ -274,11 +274,12 @@ def render_noun_page():
         with cols[i]:
             data = NOUNS_DATA[noun]
             
-            # 카드 영역을 HTML로 디자인 (레퍼런스 이미지 느낌)
+            # 카드 영역 (margin-bottom을 0으로 줄여 버튼과 더 밀착되게 수정)
             st.markdown(f"""
             <div style='
                 background-color: #FFFFFF; 
                 border: 1px solid #E2E8F0;
+                border-bottom: none;
                 padding: 40px 15px; 
                 text-align: center; 
                 height: 250px;
@@ -287,7 +288,7 @@ def render_noun_page():
                 justify-content: center;
                 align-items: center;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-                margin-bottom: 5px;
+                margin-bottom: 0px; 
             '>
                 <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
                 <div style='font-size: 20px; font-weight: 600; color: #1e293b; margin-bottom: 15px;'>{noun}</div>
@@ -295,8 +296,8 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # 카드 아래에 선택 버튼 배치
-            if st.button("이 키워드 선택", key=f"btn_{noun}"):
+            # ✨ 수정된 부분: use_container_width=True 를 추가하여 버튼이 카드 폭에 꽉 차게 만듭니다.
+            if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True):
                 st.session_state.noun = noun
                 change_page("result")
                 
