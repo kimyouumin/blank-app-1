@@ -1,46 +1,65 @@
 import streamlit as st
 
-# --- 1. 데이터 및 초기 설정 ---
-adj_words_list = [
+# ==========================================
+# 1. 데이터 영역 (Data Configuration)
+# ==========================================
+
+ADJ_WORDS_LIST = [
     "빛나는", "뜨거운", "행복한", "찬란한", "설레는", "특별한",
     "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
 ]
 
-nouns = ["첫걸음", "가능성", "청춘", "비행"]
+NOUNS = ["첫걸음", "가능성", "청춘", "비행"]
 
-nouns_data = {
+# 추가 설명(desc)과 아이콘(icon) 이미지 URL 추가
+NOUNS_DATA = {
     "첫걸음": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png", # 임시 아이콘 (장미)
+        "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image": "rose1.png", 
         "color": "rgba(255, 249, 196, 0.9)",
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "가능성": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "rose2.png", 
         "color": "rgba(255, 255, 240, 0.9)",
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/V0PyhcPB/26-A0-FA28-19-BD-419-A-B1-FF-A4-A017-A58-B2-B.jpg",
         "color": "rgba(255, 228, 230, 0.9)",
         "bg_img": "https://i.ibb.co/XZdyVkRs/0-E1-BEFDC-5578-444-C-8288-F80-DB270-C158.png"
     },
     "비행": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
         "image": "https://i.ibb.co/nqXqPQp9/IMG-0196.png", 
         "color": "rgba(225, 245, 254, 0.9)",
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
     },
 }
 
-defaults = {"page": "home", "name": "", "adj": "", "noun": ""}
-for key, val in defaults.items():
-    if key not in st.session_state:
-        st.session_state[key] = val
+# ==========================================
+# 2. 상태 관리 및 유틸리티 함수
+# ==========================================
 
-def go(page):
-    st.session_state.page = page
+def init_session_state():
+    defaults = {"page": "home", "name": "", "adj": "", "noun": ""}
+    for key, val in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = val
+
+def change_page(page_name):
+    st.session_state.page = page_name
     st.rerun()
 
-# --- 2. CSS 스타일 모음 ---
+# ==========================================
+# 3. CSS 스타일 모음
+# ==========================================
 
 def apply_font():
     st.markdown("""
@@ -60,49 +79,30 @@ def apply_home_css():
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             color: #E2E8F0;
         }
-        
-        /* 텍스트 타이포그래피 */
         .sub-title { font-size: 14px; color: #94A3B8; margin-bottom: 5px; }
         .main-title { font-size: 48px; font-weight: 600; color: #FFFFFF; margin-bottom: 30px; letter-spacing: -1px; }
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
+        .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 50px; }
         
-        .quote {
-            font-size: 18px;
-            color: #E2E8F0;
-            line-height: 1.8;
-            font-style: italic;
-            text-align: center;
-            margin-top: 50px;
-        }
-        
-        /* 버튼 스타일링 (투명 배경, 흰색 테두리) */
         div.stButton > button {
-            background-color: transparent !important;
-            border: 1px solid #475569 !important;
-            color: #F8FAFC !important;
-            border-radius: 0px !important; 
-            padding: 10px 30px !important;
-            width: auto;
-            transition: 0.3s;
+            background-color: transparent !important; border: 1px solid #475569 !important;
+            color: #F8FAFC !important; border-radius: 0px !important; 
+            padding: 10px 30px !important; width: auto; transition: 0.3s;
         }
         div.stButton > button:hover {
-            border-color: #FFFFFF !important;
-            background-color: rgba(255,255,255,0.1) !important;
+            border-color: #FFFFFF !important; background-color: rgba(255,255,255,0.1) !important;
         }
-        
-        /* 입력창 라벨 텍스트 색상(흰색) 변경 */
-        div[data-testid="stTextInput"] label p {
-            color: #FFFFFF !important;
-            font-size: 15px;
+        div[data-testid="stTextInput"] label p { color: #FFFFFF !important; font-size: 15px; }
+        div[data-testid="stTextInput"] input {
+            background-color: rgba(0,0,0,0.2); color: white; border: none;
+            border-bottom: 1px solid #475569; border-radius: 0;
         }
 
-        /* 입력창 스타일링 */
-        div[data-testid="stTextInput"] input {
-            background-color: rgba(0,0,0,0.2);
-            color: white;
-            border: none;
-            border-bottom: 1px solid #475569;
-            border-radius: 0;
+        @media (max-width: 768px) {
+            .main-title { font-size: 32px; margin-bottom: 20px; }
+            .desc { font-size: 14px; margin-bottom: 25px; }
+            .quote { font-size: 15px; margin-top: 30px; }
+            div.stButton > button { width: 100%; }
         }
         </style>
     """, unsafe_allow_html=True)
@@ -120,24 +120,52 @@ def apply_floating_css():
             100% { transform: translateY(0px); }
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
-        div[data-testid="column"]:nth-child(1) div.stButton { animation-delay: 0.0s; }
-        div[data-testid="column"]:nth-child(2) div.stButton { animation-delay: 0.4s; }
-        div[data-testid="column"]:nth-child(3) div.stButton { animation-delay: 0.8s; }
-
         div.stButton > button {
-            background-color: transparent !important;
-            border: 2px solid #334155 !important;
-            border-radius: 20px !important;
-            color: #1E293B !important;
-            font-size: 20px !important;
-            font-weight: bold;
-            padding: 15px 10px;
-            transition: all 0.3s ease;
-            width: 100%;
+            background-color: transparent !important; border: 2px solid #334155 !important;
+            border-radius: 20px !important; color: #1E293B !important;
+            font-size: 20px !important; font-weight: bold; padding: 15px 10px;
+            transition: all 0.3s ease; width: 100%;
         }
         div.stButton > button:hover {
-            transform: scale(1.05);
-            background-color: #F1F5F9 !important;
+            transform: scale(1.05); background-color: #F1F5F9 !important;
+        }
+        @media (max-width: 768px) {
+            div.stButton > button { font-size: 16px !important; padding: 10px 5px; }
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+# 명사(Noun) 페이지 전용 CSS: 레퍼런스 이미지 스타일 반영
+def apply_noun_css():
+    apply_font()
+    st.markdown("""
+        <style>
+        .stApp { background: #F4F5F6; color: #333; }
+        
+        /* 네이비 톤의 선택 버튼 스타일링 */
+        div.stButton > button {
+            background-color: #1e293b !important;
+            border: none !important;
+            border-radius: 0px !important;
+            color: #FFFFFF !important;
+            font-size: 15px !important;
+            font-weight: 400;
+            padding: 12px 10px !important;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: -10px;
+        }
+        div.stButton > button:hover {
+            background-color: #334155 !important;
+            transform: translateY(-2px);
+        }
+        
+        /* '뒤로 가기' 버튼 스타일 덮어쓰기 (가장 마지막 버튼) */
+        div[data-testid="column"]:last-child div.stButton > button {
+            background-color: transparent !important;
+            color: #64748b !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: none !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -147,46 +175,38 @@ def apply_result_css(board_color, bg_url):
     st.markdown(f"""
         <style>
         .stApp {{
-            background-image: url("{bg_url}"); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-image: url("{bg_url}"); background-size: cover;
+            background-position: center; background-attachment: fixed;
         }}
         .block-container {{
-            background-color: {board_color};
-            border-radius: 30px;
-            padding: 50px 30px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
-            max-width: 600px !important; 
-            margin-top: 80px;
-            text-align: center; 
-            color: #333;
+            background-color: {board_color}; border-radius: 30px;
+            padding: 50px 30px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
+            max-width: 600px !important; margin-top: 80px;
+            text-align: center; color: #333;
         }}
         div.stButton > button {{
-            background-color: #ffffff !important;
-            border: 1px solid #eeeeee !important;
-            border-radius: 20px !important;
-            color: #333333 !important;
-            font-size: 20px !important;
-            font-weight: bold;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            width: 100%;
+            background-color: #ffffff !important; border: 1px solid #eeeeee !important;
+            border-radius: 20px !important; color: #333333 !important;
+            font-size: 20px !important; font-weight: bold; padding: 10px 20px;
+            transition: all 0.3s ease; margin-top: 20px; width: 100%;
+        }}
+        @media (max-width: 768px) {{
+            .block-container {{ padding: 30px 20px; margin-top: 40px; border-radius: 20px; }}
+            div.stButton > button {{ font-size: 16px !important; }}
+            h1 {{ font-size: 24px !important; }}
         }}
         </style>
     """, unsafe_allow_html=True)
 
+# ==========================================
+# 4. 페이지 렌더링 함수 모음
+# ==========================================
 
-# --- 3. 페이지별 화면 구성 ---
-
-if st.session_state.page == "home":
+def render_home_page():
     apply_home_css()
-    
-    # 본문 레이아웃 2단 분할 (상단 여백 추가)
     st.markdown("<br><br><br>", unsafe_allow_html=True)
-    col1, spacer, col2 = st.columns([1, 0.2, 1])
     
+    col1, spacer, col2 = st.columns([1, 0.2, 1])
     with col1:
         st.markdown("<div class='sub-title'>성년의 날, 나에게 전하는 한 문장</div>", unsafe_allow_html=True)
         st.markdown("<div class='main-title'>나의 키워드</div>", unsafe_allow_html=True)
@@ -206,10 +226,9 @@ if st.session_state.page == "home":
                 st.warning("이름을 입력해주세요!")
             else:
                 st.session_state.name = name.strip()
-                go("adj")
+                change_page("adj")
 
     with col2:
-        # 오른쪽 인용구
         st.markdown("""
             <div class='quote'>
                 "흐리고 어두운 날에도<br>
@@ -218,51 +237,119 @@ if st.session_state.page == "home":
                 아름답게 피어날 거에요."
             </div>
         """, unsafe_allow_html=True)
-        
-        # 오른쪽 이미지 (책갈피 이미지 임시 URL)
-        st.image("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop", use_column_width=True)
+        st.image("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop", use_container_width=True)
 
-elif st.session_state.page == "adj":
+def render_adj_page():
     apply_global_css()
     apply_floating_css()
-    st.title("단어를 골라주세요 ✨")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
+    
     cols = st.columns(3)
-    for i, adj in enumerate(adj_words_list):
+    for i, adj in enumerate(ADJ_WORDS_LIST):
         with cols[i % 3]:
             if st.button(adj, use_container_width=True): 
                 st.session_state.adj = adj
-                go("noun")
+                change_page("noun")
+                
     st.write("---")
-    if st.button("← 뒤로"): go("home")
+    if st.button("← 뒤로"): 
+        change_page("home")
 
-elif st.session_state.page == "noun":
-    apply_global_css()
-    apply_floating_css()
-    st.title("단어를 골라주세요 ✨")
+def render_noun_page():
+    # 카드 UI 전용 CSS 적용
+    apply_noun_css()
+    
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; font-weight: 600;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #64748b; font-size: 15px;'>마음에 드는 키워드를 선택해보세요.</p>", unsafe_allow_html=True)
     st.write("---")
-    n_cols = st.columns(2)
-    for i, noun in enumerate(nouns):
-        with n_cols[i % 2]:
-            if st.button(noun, use_container_width=True):
+    
+    # PC 화면 기준 4개의 컬럼 생성
+    cols = st.columns(4)
+    
+    for i, noun in enumerate(NOUNS):
+        with cols[i]:
+            data = NOUNS_DATA[noun]
+            
+            # 카드 영역을 HTML로 디자인 (레퍼런스 이미지 느낌)
+            st.markdown(f"""
+            <div style='
+                background-color: #FFFFFF; 
+                border: 1px solid #E2E8F0;
+                padding: 40px 15px; 
+                text-align: center; 
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+                margin-bottom: 5px;
+            '>
+                <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
+                <div style='font-size: 20px; font-weight: 600; color: #1e293b; margin-bottom: 15px;'>{noun}</div>
+                <div style='font-size: 13px; color: #64748b; line-height: 1.6;'>{data["desc"]}</div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # 카드 아래에 선택 버튼 배치
+            if st.button("이 키워드 선택", key=f"btn_{noun}"):
                 st.session_state.noun = noun
-                go("result")
+                change_page("result")
+                
     st.write("---")
-    if st.button("← 뒤로"): go("adj")
+    
+    # 뒤로가기 버튼 레이아웃
+    back_col, _, _ = st.columns([1, 4, 1])
+    with back_col:
+        if st.button("← 뒤로"): 
+            change_page("adj")
 
-elif st.session_state.page == "result":
-    data = nouns_data[st.session_state.noun]
+def render_result_page():
+    data = NOUNS_DATA.get(st.session_state.noun)
+    if not data:
+        st.error("데이터를 불러오는 데 문제가 발생했습니다.")
+        if st.button("처음으로 돌아가기"): change_page("home")
+        return
+
     apply_result_css(data["color"], data["bg_img"])
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        try: st.image(data["image"], use_column_width=True)
-        except: st.info("이미지 파일을 찾을 수 없습니다.")
+        try: 
+            st.image(data["image"], use_container_width=True)
+        except Exception as e: 
+            st.warning("이미지 파일을 찾을 수 없습니다. (경로를 확인해주세요)")
             
     st.markdown("<br>", unsafe_allow_html=True)
     st.title("🌹 당신을 위한 한 마디 🌹")
     st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
     
-    if st.button("🔄처음부터"):
-        for key, val in defaults.items(): st.session_state[key] = val
-        go("home")
+    st.balloons()
+    
+    if st.button("🔄 처음부터 다시하기"):
+        st.session_state.clear()
+        change_page("home")
+
+# ==========================================
+# 5. 메인 앱 실행부
+# ==========================================
+
+def main():
+    init_session_state()
+    
+    if st.session_state.page == "home":
+        render_home_page()
+    elif st.session_state.page == "adj":
+        render_adj_page()
+    elif st.session_state.page == "noun":
+        render_noun_page()
+    elif st.session_state.page == "result":
+        render_result_page()
+
+if __name__ == "__main__":
+    st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide") # 가로 폭을 넓게 쓰기 위해 wide 적용
+    main()
