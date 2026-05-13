@@ -90,7 +90,9 @@ def apply_home_css():
         .sub-title { font-size: 14px; color: #94A3B8; margin-bottom: 5px; }
         .main-title { font-size: 48px; font-weight: 600; color: #FFFFFF; margin-bottom: 30px; letter-spacing: -1px; }
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
-        .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 50px; }
+        
+        /* 오른쪽 텍스트의 상단 여백을 없애서 위로 끌어올림 */
+        .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 0px; margin-bottom: 20px; }
         
         /* 시작 버튼 (흰색 배경, 사각형) */
         button[kind="secondary"] {
@@ -120,7 +122,7 @@ def apply_home_css():
         @media (max-width: 768px) {
             .main-title { font-size: 32px; margin-bottom: 20px; }
             .desc { font-size: 14px; margin-bottom: 25px; }
-            .quote { font-size: 15px; margin-top: 30px; }
+            .quote { font-size: 15px; margin-top: 10px; } /* 모바일에서는 여백 살짝 부여 */
             button[kind="secondary"] { width: 100%; }
         }
         </style>
@@ -224,7 +226,8 @@ def apply_result_css(board_color, bg_url):
         .block-container {{
             background-color: {board_color}; border-radius: 30px;
             padding: 50px 30px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
-            max-width: 600px !important; margin-top: 80px;
+            max-width: 850px !important; /* 기존 600px에서 850px로 가로 폭 넓힘 */
+            margin-top: 80px;
             text-align: center; color: #333;
         }}
         button[kind="secondary"] {{
@@ -353,7 +356,7 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # 버튼에 type="primary"를 유지하여 CSS에서 빨간색을 흰색/남색텍스트로 타겟팅하여 덮어씌움
+            # 버튼에 type="primary"를 유지하여 CSS에서 타겟팅하여 덮어씌움
             if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
