@@ -92,18 +92,22 @@ def apply_home_css():
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
         .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 50px; }
         
-        /* 시작 버튼 (흰색 배경, 남색 텍스트, 사각형) */
-        button[data-testid="baseButton-secondary"] {
+        /* 시작 버튼 (흰색 배경, 사각형) */
+        button[kind="secondary"] {
             background-color: #FFFFFF !important; 
             border: none !important;
-            color: #0f172a !important; 
             border-radius: 0px !important; 
             padding: 12px 30px !important; 
-            font-weight: bold;
             width: auto; 
             transition: 0.3s;
         }
-        button[data-testid="baseButton-secondary"]:hover {
+        /* 내부 텍스트 색상을 확실하게 덮어쓰기 위해 p 태그를 타겟팅 */
+        button[kind="secondary"] p {
+            color: #0f172a !important; /* 남색 텍스트 강제 적용 */
+            font-weight: bold !important;
+            margin: 0 !important;
+        }
+        button[kind="secondary"]:hover {
             background-color: #E2E8F0 !important;
         }
         
@@ -117,7 +121,7 @@ def apply_home_css():
             .main-title { font-size: 32px; margin-bottom: 20px; }
             .desc { font-size: 14px; margin-bottom: 25px; }
             .quote { font-size: 15px; margin-top: 30px; }
-            button[data-testid="baseButton-secondary"] { width: 100%; }
+            button[kind="secondary"] { width: 100%; }
         }
         </style>
     """, unsafe_allow_html=True)
@@ -133,24 +137,28 @@ def apply_adj_css():
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
         
-        /* 형용사 선택 버튼 및 뒤로가기 버튼 (흰색 배경, 남색 텍스트, 사각형) */
-        button[data-testid="baseButton-secondary"] {
+        /* 형용사 선택 버튼 및 뒤로가기 버튼 */
+        button[kind="secondary"] {
             background-color: #FFFFFF !important; 
             border: none !important;
             border-radius: 0px !important; 
-            color: #0f172a !important; 
-            font-size: 18px !important; 
-            font-weight: bold; 
-            padding: 15px 0px !important; /* 상하 패딩 유지, 좌우 패딩 제거 */
+            padding: 15px 0px !important; 
             transition: all 0.3s ease; 
             width: 100%;
         }
-        button[data-testid="baseButton-secondary"]:hover {
+        /* 내부 텍스트 (남색 강제 적용) */
+        button[kind="secondary"] p {
+            color: #0f172a !important; 
+            font-size: 18px !important; 
+            font-weight: bold !important; 
+            margin: 0 !important;
+        }
+        button[kind="secondary"]:hover {
             transform: scale(1.05); 
             background-color: #E2E8F0 !important;
         }
         @media (max-width: 768px) {
-            button[data-testid="baseButton-secondary"] { font-size: 16px !important; padding: 10px 0px !important; }
+            button[kind="secondary"] p { font-size: 16px !important; }
         }
         </style>
     """, unsafe_allow_html=True)
@@ -159,38 +167,48 @@ def apply_noun_css():
     apply_dark_bg_css()
     st.markdown("""
         <style>
-        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 (흰색 배경, 남색 텍스트, padding 없이 사각) */
-        button[data-testid="baseButton-primary"] {
+        /* st.button 영역과 st.markdown 카드 사이의 여백 최소화 */
+        div.stButton { margin-top: -16px !important; }
+
+        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 (빨간색 덮어쓰기) */
+        button[kind="primary"] {
             background-color: #FFFFFF !important;
             border: 1px solid #E2E8F0 !important;
-            border-top: none !important; /* 위쪽 카드와 자연스럽게 연결 */
+            border-top: none !important; 
             border-radius: 0px !important; /* 완벽한 직사각형 */
-            color: #0f172a !important; 
-            font-size: 15px !important;
-            font-weight: 600;
             padding: 0px !important; /* padding 완벽 제거 */
-            height: 50px !important; /* 고정 높이 할당 */
-            line-height: 50px !important; /* 텍스트 수직 중앙 정렬 */
+            height: 50px !important; 
             margin: 0px !important;
             transition: all 0.3s ease;
             width: 100%;
         }
-        button[data-testid="baseButton-primary"]:hover {
+        /* 내부 텍스트 (남색 강제 적용) */
+        button[kind="primary"] p {
+            color: #0f172a !important; 
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            line-height: 50px !important; /* 수직 중앙 정렬 */
+            margin: 0 !important;
+        }
+        button[kind="primary"]:hover {
             background-color: #F8FAFC !important;
-            color: #334155 !important;
         }
         
         /* Secondary 버튼: 뒤로 가기 버튼 */
-        button[data-testid="baseButton-secondary"] {
+        button[kind="secondary"] {
             background-color: transparent !important;
-            color: #CBD5E1 !important;
             border: 1px solid #475569 !important;
             border-radius: 0px !important;
             padding: 8px 20px !important;
+            height: auto !important;
         }
-        button[data-testid="baseButton-secondary"]:hover {
+        /* 뒤로가기 버튼 내부 텍스트 (회색) */
+        button[kind="secondary"] p {
+            color: #CBD5E1 !important;
+            margin: 0 !important;
+        }
+        button[kind="secondary"]:hover {
             background-color: rgba(255,255,255,0.1) !important;
-            color: #FFFFFF !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -209,16 +227,24 @@ def apply_result_css(board_color, bg_url):
             max-width: 600px !important; margin-top: 80px;
             text-align: center; color: #333;
         }}
-        div.stButton > button {{
-            background-color: #ffffff !important; border: 1px solid #eeeeee !important;
-            border-radius: 0px !important; /* 결과 화면 버튼도 사각형으로 통일 */
-            color: #0f172a !important; /* 남색 텍스트 */
-            font-size: 20px !important; font-weight: bold; padding: 15px 20px;
-            transition: all 0.3s ease; margin-top: 20px; width: 100%;
+        button[kind="secondary"] {{
+            background-color: #ffffff !important; 
+            border: 1px solid #eeeeee !important;
+            border-radius: 0px !important; 
+            padding: 15px 20px !important;
+            transition: all 0.3s ease; 
+            margin-top: 20px !important; 
+            width: 100%;
+        }}
+        button[kind="secondary"] p {{
+            color: #0f172a !important; 
+            font-size: 20px !important; 
+            font-weight: bold !important; 
+            margin: 0 !important;
         }}
         @media (max-width: 768px) {{
             .block-container {{ padding: 30px 20px; margin-top: 40px; border-radius: 20px; }}
-            div.stButton > button {{ font-size: 16px !important; }}
+            button[kind="secondary"] p {{ font-size: 16px !important; }}
             h1 {{ font-size: 24px !important; }}
         }}
         </style>
@@ -305,7 +331,7 @@ def render_noun_page():
         with cols[i]:
             data = NOUNS_DATA[noun]
             
-            # 카드 영역 디자인 (하단 margin을 완전히 없애 버튼과 밀착시킴)
+            # 카드 디자인
             st.markdown(f"""
             <div style='
                 background-color: #FFFFFF; 
@@ -327,7 +353,7 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # type="primary"로 지정하여 CSS에서 padding 없는 사각형으로 커스텀
+            # 버튼에 type="primary"를 유지하여 CSS에서 빨간색을 흰색/남색텍스트로 타겟팅하여 덮어씌움
             if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
