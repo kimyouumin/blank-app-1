@@ -61,11 +61,13 @@ def change_page(page_name):
 # ==========================================
 
 def apply_font():
+    """전체 페이지에 '고운 돋움' 폰트 적용"""
     st.markdown("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600&display=swap');
-        html, body, [class*="css"]  {
-            font-family: 'Hahmlet', serif;
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        
+        html, body, [class*="css"], [class*="st-"], button, input, p, div {
+            font-family: 'Gowun Dodum', sans-serif !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -90,10 +92,9 @@ def apply_home_css():
         .sub-title { font-size: 14px; color: #94A3B8; margin-bottom: 5px; }
         .main-title { font-size: 48px; font-weight: 600; color: #FFFFFF; margin-bottom: 30px; letter-spacing: -1px; }
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
-        
         .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 0px; margin-bottom: 20px; }
         
-        /* 시작 버튼 (명사 페이지 뒤로가기 버튼과 완벽히 동일한 포맷으로 통일) */
+        /* 버튼 스타일 (투명 배경, 사각형, 회색 테두리) */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -135,7 +136,7 @@ def apply_adj_css():
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
         
-        /* 형용사 선택 버튼 (Primary 속성) */
+        /* 형용사 선택 버튼 (Primary: 흰색 배경, 사각형, 남색 글씨) */
         button[kind="primary"] {
             background-color: #FFFFFF !important; 
             border: none !important;
@@ -151,11 +152,11 @@ def apply_adj_css():
             margin: 0 !important;
         }
         button[kind="primary"]:hover {
-            transform: scale(1.05); 
+            transform: scale(1.02); 
             background-color: #E2E8F0 !important;
         }
 
-        /* 뒤로가기 버튼 (명사 페이지 뒤로가기 버튼과 완벽히 동일한 포맷으로 통일) */
+        /* 뒤로가기 버튼 (Secondary: 테두리형 통일) */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -171,10 +172,6 @@ def apply_adj_css():
         button[kind="secondary"]:hover {
             background-color: rgba(255,255,255,0.1) !important;
         }
-
-        @media (max-width: 768px) {
-            button[kind="primary"] p { font-size: 16px !important; }
-        }
         </style>
     """, unsafe_allow_html=True)
 
@@ -184,7 +181,7 @@ def apply_noun_css():
         <style>
         div.stButton { margin-top: -16px !important; }
 
-        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 */
+        /* 키워드 선택 버튼 (Primary: 흰색 배경, 남색 글씨, 패딩 없음) */
         button[kind="primary"] {
             background-color: #FFFFFF !important;
             border: 1px solid #E2E8F0 !important;
@@ -207,7 +204,7 @@ def apply_noun_css():
             background-color: #F8FAFC !important;
         }
         
-        /* Secondary 버튼: 뒤로 가기 버튼 */
+        /* 뒤로 가기 버튼 (Secondary: 테두리형 통일) */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -255,11 +252,6 @@ def apply_result_css(board_color, bg_url):
             font-weight: bold !important; 
             margin: 0 !important;
         }}
-        @media (max-width: 768px) {{
-            .block-container {{ padding: 30px 20px; margin-top: 40px; border-radius: 20px; }}
-            button[kind="secondary"] p {{ font-size: 16px !important; }}
-            h1 {{ font-size: 24px !important; }}
-        }}
         </style>
     """, unsafe_allow_html=True)
 
@@ -286,7 +278,7 @@ def render_home_page():
         name = st.text_input("당신의 이름을 알려주세요 (Enter)", value=st.session_state.name)
         st.markdown("<br>", unsafe_allow_html=True)
         
-        if st.button("검사 시작하기 →"):
+        if st.button("검사 시작하기 →", key="start_btn"):
             if not name.strip(): 
                 st.warning("이름을 입력해주세요!")
             else:
@@ -301,17 +293,16 @@ def render_home_page():
             </div>
         """, unsafe_allow_html=True)
         
-        # 가로, 세로 크기를 고정하고 비율을 유지(object-fit: cover)하는 HTML 코드 적용
+        # 이미지 크기 및 비율 고정 적용
         st.markdown("""
             <div style="display: flex; justify-content: center;">
                 <img src="https://i.ibb.co/zTxK90QJ/IMG-0203.jpg" 
-                     style="width: 280px; height: 320px; object-fit: cover;">
+                     style="width: 480px; height: 320px; object-fit: cover;">
             </div>
         """, unsafe_allow_html=True)
 
 def render_adj_page():
     apply_adj_css()
-    
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
@@ -319,22 +310,20 @@ def render_adj_page():
     cols = st.columns(3)
     for i, adj in enumerate(ADJ_WORDS_LIST):
         with cols[i % 3]:
-            # 형용사 선택 버튼에 type="primary"를 추가하여 흰색 스타일과 매핑
-            if st.button(adj, use_container_width=True, type="primary"): 
+            # 형용사 버튼 (Primary)
+            if st.button(adj, use_container_width=True, type="primary", key=f"adj_{i}"): 
                 st.session_state.adj = adj
                 change_page("noun")
                 
     st.write("---")
-    
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        # 뒤로 버튼은 기본값인 type="secondary"로 유지되어 투명한 회색 테두리 스타일 적용
-        if st.button("← 뒤로"): 
+        # 뒤로가기 버튼 (Secondary)
+        if st.button("← 뒤로", key="back_to_home"): 
             change_page("home")
 
 def render_noun_page():
     apply_noun_css()
-    
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
     st.markdown("""
@@ -346,25 +335,15 @@ def render_noun_page():
     st.write("---")
     
     cols = st.columns(4)
-    
     for i, noun in enumerate(NOUNS):
         with cols[i]:
             data = NOUNS_DATA[noun]
-            
             st.markdown(f"""
             <div style='
-                background-color: #FFFFFF; 
-                border: 1px solid #E2E8F0;
-                border-bottom: none;
-                padding: 40px 15px; 
-                text-align: center; 
-                height: 250px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-                margin-bottom: 0px; 
+                background-color: #FFFFFF; border: 1px solid #E2E8F0; border-bottom: none;
+                padding: 40px 15px; text-align: center; height: 250px;
+                display: flex; flex-direction: column; justify-content: center; align-items: center;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 0px; 
             '>
                 <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
                 <div style='font-size: 20px; font-weight: 600; color: #1e293b; margin-bottom: 15px;'>{noun}</div>
@@ -372,15 +351,16 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
+            # 선택 버튼 (Primary)
             if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
                 
     st.write("---")
-    
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        if st.button("← 뒤로"): 
+        # 뒤로가기 버튼 (Secondary)
+        if st.button("← 뒤로", key="back_to_adj"): 
             change_page("adj")
 
 def render_result_page():
@@ -394,18 +374,15 @@ def render_result_page():
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        try: 
-            st.image(data["image"], use_container_width=True)
-        except Exception as e: 
-            st.warning("이미지 파일을 찾을 수 없습니다. (경로를 확인해주세요)")
+        try: st.image(data["image"], use_container_width=True)
+        except: st.warning("이미지 경로 확인 필요")
             
     st.markdown("<br>", unsafe_allow_html=True)
     st.title("🌹 당신을 위한 한 마디 🌹")
     st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
-    
     st.balloons()
     
-    if st.button("🔄 처음부터 다시하기"):
+    if st.button("🔄 처음부터 다시하기", key="restart_btn"):
         st.session_state.clear()
         change_page("home")
 
@@ -415,15 +392,10 @@ def render_result_page():
 
 def main():
     init_session_state()
-    
-    if st.session_state.page == "home":
-        render_home_page()
-    elif st.session_state.page == "adj":
-        render_adj_page()
-    elif st.session_state.page == "noun":
-        render_noun_page()
-    elif st.session_state.page == "result":
-        render_result_page()
+    if st.session_state.page == "home": render_home_page()
+    elif st.session_state.page == "adj": render_adj_page()
+    elif st.session_state.page == "noun": render_noun_page()
+    elif st.session_state.page == "result": render_result_page()
 
 if __name__ == "__main__":
     st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
