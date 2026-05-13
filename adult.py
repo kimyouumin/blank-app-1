@@ -4,13 +4,41 @@ import streamlit as st
 # 1. 데이터 영역 (Data Configuration)
 # ==========================================
 
+# 새로 추가된 가치관 데이터 (6개)
+VALUES = ["용기", "성장", "자유", "도전", "연결", "희망"]
+VALUES_DATA = {
+    "용기": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘"
+    },
+    "성장": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루"
+    },
+    "자유": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리"
+    },
+    "도전": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음"
+    },
+    "연결": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "함께하는 순간들이<br>만들어가는<br>따뜻한 관계"
+    },
+    "희망": {
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "desc": "지금 이 순간에도<br>피어나는<br>작은 가능성"
+    }
+}
+
 ADJ_WORDS_LIST = [
     "빛나는", "뜨거운", "행복한", "찬란한", "설레는", "특별한",
     "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
 ]
 
 NOUNS = ["첫걸음", "가능성", "청춘", "비행"]
-
 NOUNS_DATA = {
     "첫걸음": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
@@ -47,7 +75,8 @@ NOUNS_DATA = {
 # ==========================================
 
 def init_session_state():
-    defaults = {"page": "home", "name": "", "adj": "", "noun": ""}
+    # value(가치관) 상태 추가
+    defaults = {"page": "home", "name": "", "value": "", "adj": "", "noun": ""}
     for key, val in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = val
@@ -66,7 +95,6 @@ def apply_font():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
         
-        /* h1부터 h6까지 제목 태그와 일반 텍스트 요소를 모두 포함 */
         html, body, [class*="css"], [class*="st-"], button, input, p, div, h1, h2, h3, h4, h5, h6, span, label {
             font-family: 'Gowun Dodum', sans-serif !important;
         }
@@ -173,7 +201,8 @@ def apply_adj_css():
         </style>
     """, unsafe_allow_html=True)
 
-def apply_noun_css():
+def apply_card_css():
+    """가치관 및 명사 페이지 공통 카드 스타일"""
     apply_dark_bg_css()
     st.markdown("""
         <style>
@@ -279,7 +308,8 @@ def render_home_page():
                 st.warning("이름을 입력해주세요!")
             else:
                 st.session_state.name = name.strip()
-                change_page("adj")
+                # 홈 화면 다음은 가치관(value) 선택 페이지로 이동
+                change_page("value")
 
     with col2:
         st.markdown("""
@@ -296,11 +326,58 @@ def render_home_page():
             </div>
         """, unsafe_allow_html=True)
 
+def render_value_page():
+    """새로 추가된 가치관 선택 페이지"""
+    apply_card_css()
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신이 중요하게 생각하는 가치는 무엇인가요?</h3>", unsafe_allow_html=True)
+    st.markdown("""
+        <p style='text-align: center; color: #CBD5E1; font-size: 15px; line-height: 1.6;'>
+            가장 마음에 와닿는 가치관을 확인하고,<br>
+            하단의 <b>'이 가치관 선택'</b>을 눌러주세요.
+        </p>
+    """, unsafe_allow_html=True)
+    st.write("---")
+    
+    # 총 6개를 3개씩 2줄로 배치
+    for row in range(2):
+        cols = st.columns(3)
+        for col in range(3):
+            idx = row * 3 + col
+            if idx < len(VALUES):
+                val = VALUES[idx]
+                data = VALUES_DATA[val]
+                
+                with cols[col]:
+                    st.markdown(f"""
+                    <div style='
+                        background-color: #FFFFFF; border: 1px solid #E2E8F0; border-bottom: none;
+                        padding: 40px 15px; text-align: center; height: 250px;
+                        display: flex; flex-direction: column; justify-content: center; align-items: center;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 0px; 
+                    '>
+                        <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
+                        <div style='font-size: 20px; font-weight: 600; color: #1e293b; margin-bottom: 15px;'>{val}</div>
+                        <div style='font-size: 13px; color: #64748b; line-height: 1.6;'>{data["desc"]}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    if st.button("이 가치관 선택", key=f"btn_val_{val}", use_container_width=True, type="primary"):
+                        st.session_state.value = val
+                        change_page("adj")
+        st.markdown("<br>", unsafe_allow_html=True) # 줄바꿈 여백 추가
+
+    st.write("---")
+    back_col, _, _ = st.columns([1, 4, 1])
+    with back_col:
+        if st.button("← 뒤로", key="back_to_home_from_val"): 
+            change_page("home")
+
 def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # 제목 태그를 명시적으로 사용하여 폰트 적용 확인
     st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
@@ -314,14 +391,14 @@ def render_adj_page():
     st.write("---")
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        if st.button("← 뒤로", key="back_to_home"): 
-            change_page("home")
+        # 형용사 페이지의 뒤로가기는 이제 가치관(value) 페이지로 향함
+        if st.button("← 뒤로", key="back_to_val"): 
+            change_page("value")
 
 def render_noun_page():
-    apply_noun_css()
+    apply_card_css()
     st.markdown("<br><br>", unsafe_allow_html=True)
     
-    # 제목 태그를 명시적으로 사용하여 폰트 적용 확인
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
     st.markdown("""
         <p style='text-align: center; color: #CBD5E1; font-size: 15px; line-height: 1.6;'>
@@ -367,7 +444,6 @@ def render_result_page():
 
     apply_result_css(data["color"], data["bg_img"])
     
-    # 제목 스타일 (결과 페이지 제목 폰트 적용)
     st.markdown("<h1 style='text-align: center; color: #333;'>🌹 당신을 위한 한 마디 🌹</h1>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns([1, 2, 1])
@@ -376,8 +452,8 @@ def render_result_page():
         except: st.warning("이미지 확인 필요")
             
     st.markdown("<br>", unsafe_allow_html=True)
-    # 아래 결과 텍스트에도 폰트가 잘 적용되도록 래핑
-    st.markdown(f"<h3 style='text-align: center;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
+    # 가치관, 형용사, 명사가 모두 포함된 응원 문구
+    st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치를 담은 <br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
     st.balloons()
     
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
@@ -390,10 +466,18 @@ def render_result_page():
 
 def main():
     init_session_state()
-    if st.session_state.page == "home": render_home_page()
-    elif st.session_state.page == "adj": render_adj_page()
-    elif st.session_state.page == "noun": render_noun_page()
-    elif st.session_state.page == "result": render_result_page()
+    
+    # 페이지 라우팅
+    if st.session_state.page == "home": 
+        render_home_page()
+    elif st.session_state.page == "value": 
+        render_value_page()
+    elif st.session_state.page == "adj": 
+        render_adj_page()
+    elif st.session_state.page == "noun": 
+        render_noun_page()
+    elif st.session_state.page == "result": 
+        render_result_page()
 
 if __name__ == "__main__":
     st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
