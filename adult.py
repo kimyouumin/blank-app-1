@@ -11,10 +11,9 @@ ADJ_WORDS_LIST = [
 
 NOUNS = ["첫걸음", "가능성", "청춘", "비행"]
 
-# 추가 설명(desc)과 아이콘(icon) 이미지 URL 추가
 NOUNS_DATA = {
     "첫걸음": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png", # 임시 아이콘 (장미)
+        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image": "rose1.png", 
         "color": "rgba(255, 249, 196, 0.9)",
@@ -71,7 +70,8 @@ def apply_font():
         </style>
     """, unsafe_allow_html=True)
 
-def apply_home_css():
+def apply_dark_bg_css():
+    """홈, 형용사, 명사 페이지 공통 네이비 배경"""
     apply_font()
     st.markdown("""
         <style>
@@ -79,19 +79,29 @@ def apply_home_css():
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             color: #E2E8F0;
         }
+        hr { border-color: #334155 !important; }
+        </style>
+    """, unsafe_allow_html=True)
+
+def apply_home_css():
+    apply_dark_bg_css()
+    st.markdown("""
+        <style>
         .sub-title { font-size: 14px; color: #94A3B8; margin-bottom: 5px; }
         .main-title { font-size: 48px; font-weight: 600; color: #FFFFFF; margin-bottom: 30px; letter-spacing: -1px; }
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
         .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 50px; }
         
-        div.stButton > button {
+        /* 시작 버튼 */
+        button[data-testid="baseButton-secondary"] {
             background-color: transparent !important; border: 1px solid #475569 !important;
             color: #F8FAFC !important; border-radius: 0px !important; 
             padding: 10px 30px !important; width: auto; transition: 0.3s;
         }
-        div.stButton > button:hover {
+        button[data-testid="baseButton-secondary"]:hover {
             border-color: #FFFFFF !important; background-color: rgba(255,255,255,0.1) !important;
         }
+        
         div[data-testid="stTextInput"] label p { color: #FFFFFF !important; font-size: 15px; }
         div[data-testid="stTextInput"] input {
             background-color: rgba(0,0,0,0.2); color: white; border: none;
@@ -102,16 +112,13 @@ def apply_home_css():
             .main-title { font-size: 32px; margin-bottom: 20px; }
             .desc { font-size: 14px; margin-bottom: 25px; }
             .quote { font-size: 15px; margin-top: 30px; }
-            div.stButton > button { width: 100%; }
+            button[data-testid="baseButton-secondary"] { width: 100%; }
         }
         </style>
     """, unsafe_allow_html=True)
 
-def apply_global_css():
-    apply_font()
-    st.markdown("<style>.stApp { background: #FAFAFA; color: #333; }</style>", unsafe_allow_html=True)
-
-def apply_floating_css():
+def apply_adj_css():
+    apply_dark_bg_css()
     st.markdown("""
         <style>
         @keyframes floating {
@@ -120,52 +127,65 @@ def apply_floating_css():
             100% { transform: translateY(0px); }
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
-        div.stButton > button {
-            background-color: transparent !important; border: 2px solid #334155 !important;
-            border-radius: 20px !important; color: #1E293B !important;
-            font-size: 20px !important; font-weight: bold; padding: 15px 10px;
-            transition: all 0.3s ease; width: 100%;
+        
+        /* 형용사 선택 버튼 및 뒤로가기 버튼 */
+        button[data-testid="baseButton-secondary"] {
+            background-color: transparent !important; 
+            border: 2px solid #475569 !important;
+            border-radius: 20px !important; 
+            color: #F8FAFC !important; /* 텍스트 흰색 */
+            font-size: 20px !important; 
+            font-weight: bold; 
+            padding: 15px 10px;
+            transition: all 0.3s ease; 
+            width: 100%;
         }
-        div.stButton > button:hover {
-            transform: scale(1.05); background-color: #F1F5F9 !important;
+        button[data-testid="baseButton-secondary"]:hover {
+            transform: scale(1.05); 
+            background-color: rgba(255,255,255,0.1) !important;
+            border-color: #FFFFFF !important;
         }
         @media (max-width: 768px) {
-            div.stButton > button { font-size: 16px !important; padding: 10px 5px; }
+            button[data-testid="baseButton-secondary"] { font-size: 16px !important; padding: 10px 5px; }
         }
         </style>
     """, unsafe_allow_html=True)
 
-# 명사(Noun) 페이지 전용 CSS: 레퍼런스 이미지 스타일 반영
 def apply_noun_css():
-    apply_font()
+    apply_dark_bg_css()
     st.markdown("""
         <style>
-        .stApp { background: #F4F5F6; color: #333; }
-        
-        /* 네이비 톤의 선택 버튼 스타일링 */
-        div.stButton > button {
-            background-color: #1e293b !important;
+        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 (흰색 배경 + 남색 텍스트) */
+        button[data-testid="baseButton-primary"] {
+            background-color: #FFFFFF !important;
             border: none !important;
             border-radius: 0px !important;
-            color: #FFFFFF !important;
+            color: #0f172a !important; /* 남색 텍스트 */
             font-size: 15px !important;
-            font-weight: 400;
+            font-weight: 600;
             padding: 12px 10px !important;
             transition: all 0.3s ease;
             width: 100%;
             margin-top: -10px;
         }
-        div.stButton > button:hover {
-            background-color: #334155 !important;
+        button[data-testid="baseButton-primary"]:hover {
+            background-color: #F8FAFC !important;
             transform: translateY(-2px);
         }
         
-        /* '뒤로 가기' 버튼 스타일 덮어쓰기 (가장 마지막 버튼) */
-        div[data-testid="column"]:last-child div.stButton > button {
+        /* Secondary 버튼: 뒤로 가기 버튼 */
+        button[data-testid="baseButton-secondary"] {
             background-color: transparent !important;
-            color: #64748b !important;
-            border: 1px solid #cbd5e1 !important;
+            color: #CBD5E1 !important;
+            border: 1px solid #475569 !important;
+            border-radius: 5px !important;
+            padding: 8px 20px !important;
             box-shadow: none !important;
+        }
+        button[data-testid="baseButton-secondary"]:hover {
+            background-color: rgba(255,255,255,0.1) !important;
+            color: #FFFFFF !important;
+            border-color: #FFFFFF !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -240,11 +260,10 @@ def render_home_page():
         st.image("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop", use_container_width=True)
 
 def render_adj_page():
-    apply_global_css()
-    apply_floating_css()
+    apply_adj_css()
     
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
@@ -255,26 +274,33 @@ def render_adj_page():
                 change_page("noun")
                 
     st.write("---")
-    if st.button("← 뒤로"): 
-        change_page("home")
+    
+    back_col, _, _ = st.columns([1, 4, 1])
+    with back_col:
+        if st.button("← 뒤로"): 
+            change_page("home")
 
 def render_noun_page():
-    # 카드 UI 전용 CSS 적용
     apply_noun_css()
     
     st.markdown("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; font-weight: 600;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #64748b; font-size: 15px;'>마음에 드는 키워드를 선택해보세요.</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
+    
+    # 수정된 안내 문구 적용
+    st.markdown("""
+        <p style='text-align: center; color: #CBD5E1; font-size: 15px; line-height: 1.6;'>
+            마음에 드는 키워드를 확인하고,<br>
+            하단의 <b>'이 키워드 선택'</b>을 눌러 키워드를 선택해주세요.
+        </p>
+    """, unsafe_allow_html=True)
     st.write("---")
     
-    # PC 화면 기준 4개의 컬럼 생성
     cols = st.columns(4)
     
     for i, noun in enumerate(NOUNS):
         with cols[i]:
             data = NOUNS_DATA[noun]
             
-            # 카드 영역 (margin-bottom을 0으로 줄여 버튼과 더 밀착되게 수정)
             st.markdown(f"""
             <div style='
                 background-color: #FFFFFF; 
@@ -287,7 +313,7 @@ def render_noun_page():
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 margin-bottom: 0px; 
             '>
                 <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
@@ -296,8 +322,8 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # ✨ 수정된 부분: use_container_width=True 를 추가하여 버튼이 카드 폭에 꽉 차게 만듭니다.
-            if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True):
+            # 버튼에 type="primary"를 부여하여 CSS에서 예외 타겟팅
+            if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
                 
@@ -306,6 +332,7 @@ def render_noun_page():
     # 뒤로가기 버튼 레이아웃
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
+        # 뒤로가기는 기본 type="secondary" 속성을 가져감
         if st.button("← 뒤로"): 
             change_page("adj")
 
@@ -352,5 +379,5 @@ def main():
         render_result_page()
 
 if __name__ == "__main__":
-    st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide") # 가로 폭을 넓게 쓰기 위해 wide 적용
+    st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
     main()
