@@ -61,19 +61,19 @@ def change_page(page_name):
 # ==========================================
 
 def apply_font():
-    """전체 페이지에 '고운 돋움' 폰트 적용"""
+    """전체 요소(제목, 본문, 버튼 등)에 '고운 돋움' 폰트 강제 적용"""
     st.markdown("""
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
         
-        html, body, [class*="css"], [class*="st-"], button, input, p, div {
+        /* h1부터 h6까지 제목 태그와 일반 텍스트 요소를 모두 포함 */
+        html, body, [class*="css"], [class*="st-"], button, input, p, div, h1, h2, h3, h4, h5, h6, span, label {
             font-family: 'Gowun Dodum', sans-serif !important;
         }
         </style>
     """, unsafe_allow_html=True)
 
 def apply_dark_bg_css():
-    """홈, 형용사, 명사 페이지 공통 네이비 배경"""
     apply_font()
     st.markdown("""
         <style>
@@ -94,7 +94,7 @@ def apply_home_css():
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
         .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 0px; margin-bottom: 20px; }
         
-        /* 버튼 스타일 (투명 배경, 사각형, 회색 테두리) */
+        /* 버튼 스타일 통일 */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -136,7 +136,6 @@ def apply_adj_css():
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
         
-        /* 형용사 선택 버튼 (Primary: 흰색 배경, 사각형, 남색 글씨) */
         button[kind="primary"] {
             background-color: #FFFFFF !important; 
             border: none !important;
@@ -156,7 +155,6 @@ def apply_adj_css():
             background-color: #E2E8F0 !important;
         }
 
-        /* 뒤로가기 버튼 (Secondary: 테두리형 통일) */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -181,7 +179,6 @@ def apply_noun_css():
         <style>
         div.stButton { margin-top: -16px !important; }
 
-        /* 키워드 선택 버튼 (Primary: 흰색 배경, 남색 글씨, 패딩 없음) */
         button[kind="primary"] {
             background-color: #FFFFFF !important;
             border: 1px solid #E2E8F0 !important;
@@ -204,7 +201,6 @@ def apply_noun_css():
             background-color: #F8FAFC !important;
         }
         
-        /* 뒤로 가기 버튼 (Secondary: 테두리형 통일) */
         button[kind="secondary"] {
             background-color: transparent !important;
             border: 1px solid #475569 !important;
@@ -293,7 +289,6 @@ def render_home_page():
             </div>
         """, unsafe_allow_html=True)
         
-        # 이미지 크기 및 비율 고정 적용
         st.markdown("""
             <div style="display: flex; justify-content: center;">
                 <img src="https://i.ibb.co/zTxK90QJ/IMG-0203.jpg" 
@@ -304,13 +299,14 @@ def render_home_page():
 def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
+    
+    # 제목 태그를 명시적으로 사용하여 폰트 적용 확인
     st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>단어를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
     for i, adj in enumerate(ADJ_WORDS_LIST):
         with cols[i % 3]:
-            # 형용사 버튼 (Primary)
             if st.button(adj, use_container_width=True, type="primary", key=f"adj_{i}"): 
                 st.session_state.adj = adj
                 change_page("noun")
@@ -318,13 +314,14 @@ def render_adj_page():
     st.write("---")
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        # 뒤로가기 버튼 (Secondary)
         if st.button("← 뒤로", key="back_to_home"): 
             change_page("home")
 
 def render_noun_page():
     apply_noun_css()
     st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    # 제목 태그를 명시적으로 사용하여 폰트 적용 확인
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
     st.markdown("""
         <p style='text-align: center; color: #CBD5E1; font-size: 15px; line-height: 1.6;'>
@@ -351,7 +348,6 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # 선택 버튼 (Primary)
             if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
@@ -359,27 +355,29 @@ def render_noun_page():
     st.write("---")
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        # 뒤로가기 버튼 (Secondary)
         if st.button("← 뒤로", key="back_to_adj"): 
             change_page("adj")
 
 def render_result_page():
     data = NOUNS_DATA.get(st.session_state.noun)
     if not data:
-        st.error("데이터를 불러오는 데 문제가 발생했습니다.")
-        if st.button("처음으로 돌아가기"): change_page("home")
+        st.error("데이터 오류")
+        if st.button("홈으로"): change_page("home")
         return
 
     apply_result_css(data["color"], data["bg_img"])
     
+    # 제목 스타일 (결과 페이지 제목 폰트 적용)
+    st.markdown("<h1 style='text-align: center; color: #333;'>🌹 당신을 위한 한 마디 🌹</h1>", unsafe_allow_html=True)
+    
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         try: st.image(data["image"], use_container_width=True)
-        except: st.warning("이미지 경로 확인 필요")
+        except: st.warning("이미지 확인 필요")
             
     st.markdown("<br>", unsafe_allow_html=True)
-    st.title("🌹 당신을 위한 한 마디 🌹")
-    st.markdown(f"### **{st.session_state.name}**님의 **{st.session_state.adj} {st.session_state.noun}** 응원합니다!")
+    # 아래 결과 텍스트에도 폰트가 잘 적용되도록 래핑
+    st.markdown(f"<h3 style='text-align: center;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
     st.balloons()
     
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
