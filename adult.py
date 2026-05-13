@@ -92,14 +92,19 @@ def apply_home_css():
         .desc { font-size: 16px; color: #CBD5E1; line-height: 1.6; margin-bottom: 40px; }
         .quote { font-size: 18px; color: #E2E8F0; line-height: 1.8; font-style: italic; text-align: center; margin-top: 50px; }
         
-        /* 시작 버튼 */
+        /* 시작 버튼 (흰색 배경, 남색 텍스트, 사각형) */
         button[data-testid="baseButton-secondary"] {
-            background-color: transparent !important; border: 1px solid #475569 !important;
-            color: #F8FAFC !important; border-radius: 0px !important; 
-            padding: 10px 30px !important; width: auto; transition: 0.3s;
+            background-color: #FFFFFF !important; 
+            border: none !important;
+            color: #0f172a !important; 
+            border-radius: 0px !important; 
+            padding: 12px 30px !important; 
+            font-weight: bold;
+            width: auto; 
+            transition: 0.3s;
         }
         button[data-testid="baseButton-secondary"]:hover {
-            border-color: #FFFFFF !important; background-color: rgba(255,255,255,0.1) !important;
+            background-color: #E2E8F0 !important;
         }
         
         div[data-testid="stTextInput"] label p { color: #FFFFFF !important; font-size: 15px; }
@@ -128,25 +133,24 @@ def apply_adj_css():
         }
         div.stButton { animation: floating 3s ease-in-out infinite; margin-bottom: 10px; }
         
-        /* 형용사 선택 버튼 및 뒤로가기 버튼 */
+        /* 형용사 선택 버튼 및 뒤로가기 버튼 (흰색 배경, 남색 텍스트, 사각형) */
         button[data-testid="baseButton-secondary"] {
-            background-color: transparent !important; 
-            border: 2px solid #475569 !important;
-            border-radius: 20px !important; 
-            color: #F8FAFC !important; /* 텍스트 흰색 */
-            font-size: 20px !important; 
+            background-color: #FFFFFF !important; 
+            border: none !important;
+            border-radius: 0px !important; 
+            color: #0f172a !important; 
+            font-size: 18px !important; 
             font-weight: bold; 
-            padding: 15px 10px;
+            padding: 15px 0px !important; /* 상하 패딩 유지, 좌우 패딩 제거 */
             transition: all 0.3s ease; 
             width: 100%;
         }
         button[data-testid="baseButton-secondary"]:hover {
             transform: scale(1.05); 
-            background-color: rgba(255,255,255,0.1) !important;
-            border-color: #FFFFFF !important;
+            background-color: #E2E8F0 !important;
         }
         @media (max-width: 768px) {
-            button[data-testid="baseButton-secondary"] { font-size: 16px !important; padding: 10px 5px; }
+            button[data-testid="baseButton-secondary"] { font-size: 16px !important; padding: 10px 0px !important; }
         }
         </style>
     """, unsafe_allow_html=True)
@@ -155,22 +159,25 @@ def apply_noun_css():
     apply_dark_bg_css()
     st.markdown("""
         <style>
-        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 (흰색 배경 + 남색 텍스트) */
+        /* Primary 버튼: 카드 하단의 '이 키워드 선택' 버튼 (흰색 배경, 남색 텍스트, padding 없이 사각) */
         button[data-testid="baseButton-primary"] {
             background-color: #FFFFFF !important;
-            border: none !important;
-            border-radius: 0px !important;
-            color: #0f172a !important; /* 남색 텍스트 */
+            border: 1px solid #E2E8F0 !important;
+            border-top: none !important; /* 위쪽 카드와 자연스럽게 연결 */
+            border-radius: 0px !important; /* 완벽한 직사각형 */
+            color: #0f172a !important; 
             font-size: 15px !important;
             font-weight: 600;
-            padding: 12px 10px !important;
+            padding: 0px !important; /* padding 완벽 제거 */
+            height: 50px !important; /* 고정 높이 할당 */
+            line-height: 50px !important; /* 텍스트 수직 중앙 정렬 */
+            margin: 0px !important;
             transition: all 0.3s ease;
             width: 100%;
-            margin-top: -10px;
         }
         button[data-testid="baseButton-primary"]:hover {
             background-color: #F8FAFC !important;
-            transform: translateY(-2px);
+            color: #334155 !important;
         }
         
         /* Secondary 버튼: 뒤로 가기 버튼 */
@@ -178,14 +185,12 @@ def apply_noun_css():
             background-color: transparent !important;
             color: #CBD5E1 !important;
             border: 1px solid #475569 !important;
-            border-radius: 5px !important;
+            border-radius: 0px !important;
             padding: 8px 20px !important;
-            box-shadow: none !important;
         }
         button[data-testid="baseButton-secondary"]:hover {
             background-color: rgba(255,255,255,0.1) !important;
             color: #FFFFFF !important;
-            border-color: #FFFFFF !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -206,8 +211,9 @@ def apply_result_css(board_color, bg_url):
         }}
         div.stButton > button {{
             background-color: #ffffff !important; border: 1px solid #eeeeee !important;
-            border-radius: 20px !important; color: #333333 !important;
-            font-size: 20px !important; font-weight: bold; padding: 10px 20px;
+            border-radius: 0px !important; /* 결과 화면 버튼도 사각형으로 통일 */
+            color: #0f172a !important; /* 남색 텍스트 */
+            font-size: 20px !important; font-weight: bold; padding: 15px 20px;
             transition: all 0.3s ease; margin-top: 20px; width: 100%;
         }}
         @media (max-width: 768px) {{
@@ -285,8 +291,6 @@ def render_noun_page():
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
-    
-    # 수정된 안내 문구 적용
     st.markdown("""
         <p style='text-align: center; color: #CBD5E1; font-size: 15px; line-height: 1.6;'>
             마음에 드는 키워드를 확인하고,<br>
@@ -301,6 +305,7 @@ def render_noun_page():
         with cols[i]:
             data = NOUNS_DATA[noun]
             
+            # 카드 영역 디자인 (하단 margin을 완전히 없애 버튼과 밀착시킴)
             st.markdown(f"""
             <div style='
                 background-color: #FFFFFF; 
@@ -313,7 +318,7 @@ def render_noun_page():
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
                 margin-bottom: 0px; 
             '>
                 <img src='{data["icon"]}' width='35' style='margin-bottom: 25px;'/>
@@ -322,17 +327,15 @@ def render_noun_page():
             </div>
             """, unsafe_allow_html=True)
             
-            # 버튼에 type="primary"를 부여하여 CSS에서 예외 타겟팅
+            # type="primary"로 지정하여 CSS에서 padding 없는 사각형으로 커스텀
             if st.button("이 키워드 선택", key=f"btn_{noun}", use_container_width=True, type="primary"):
                 st.session_state.noun = noun
                 change_page("result")
                 
     st.write("---")
     
-    # 뒤로가기 버튼 레이아웃
     back_col, _, _ = st.columns([1, 4, 1])
     with back_col:
-        # 뒤로가기는 기본 type="secondary" 속성을 가져감
         if st.button("← 뒤로"): 
             change_page("adj")
 
