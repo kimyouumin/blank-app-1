@@ -300,7 +300,14 @@ def render_home_page():
                 당신의 이야기도 언젠가 아름답게 피어날 거에요."
             </div>
         """, unsafe_allow_html=True)
-        st.image("https://i.ibb.co/zTxK90QJ/IMG-0203.jpg", width=400)
+        
+        # 가로, 세로 크기를 고정하고 비율을 유지(object-fit: cover)하는 HTML 코드 적용
+        st.markdown("""
+            <div style="display: flex; justify-content: center;">
+                <img src="https://i.ibb.co/zTxK90QJ/IMG-0203.jpg" 
+                     style="width: 200px; height: 320px; object-fit: cover;">
+            </div>
+        """, unsafe_allow_html=True)
 
 def render_adj_page():
     apply_adj_css()
