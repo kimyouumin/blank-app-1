@@ -264,7 +264,7 @@ def apply_result_css(board_color, bg_url, text_color):
             background-color: {board_color}; 
             border-radius: 30px;
             padding: 50px 30px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
-            max-width: 650px !important; 
+            max-width: 600px !important; 
             margin-top: 80px;
             text-align: center; color: {text_color};
             /* 보드 내부 요소들의 글자색 강제 적용 */
