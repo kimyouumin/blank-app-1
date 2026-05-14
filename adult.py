@@ -344,7 +344,6 @@ def render_value_page():
     # --- 장미 진행 가이드 (꽃봉오리) ---
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/5xsSsqX5/IMG-0209.jpg", width=70)
         st.markdown("""
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
             <img src="https://i.ibb.co/5xsSsqX5/IMG-0209.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
