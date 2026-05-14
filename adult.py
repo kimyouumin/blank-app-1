@@ -49,7 +49,7 @@ NOUNS_DATA = {
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "가능성": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/sJvzv6Tm/B9-AAD50-B-C09-F-465-A-ABF4-18-E186-D8-E65-B.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
         "color": "rgba(255, 255, 255, 0.9)",      # 원래 장미 색상(흰색)
@@ -65,7 +65,7 @@ NOUNS_DATA = {
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "비상": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/QF4qQRBm/D5-D9-CEEB-936-C-4687-9215-4042-E53-A0-F1-F.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
         "image": "https://i.ibb.co/KZJpbst/Talk-File.png",
         "color": "rgba(16, 29, 56, 0.9)",         # 원래 장미 색상(남색) 
