@@ -107,3 +107,25 @@ def render_result_page():
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
         st.session_state.clear()
         change_page("home")
+
+        # 5. 메인 앱 실행부
+# ==========================================
+
+def main():
+    init_session_state()
+    
+    # 페이지 라우팅
+    if st.session_state.page == "home": 
+        render_home_page()
+    elif st.session_state.page == "value": 
+        render_value_page()
+    elif st.session_state.page == "adj": 
+        render_adj_page()
+    elif st.session_state.page == "noun": 
+        render_noun_page()
+    elif st.session_state.page == "result": 
+        render_result_page()
+
+if __name__ == "__main__":
+    st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
+    main()
