@@ -481,5 +481,5 @@ def main():
 
 if __name__ == "__main__":
     st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
-    mmain()
+    main()
     
