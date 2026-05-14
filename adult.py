@@ -342,9 +342,9 @@ def render_value_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
     # --- 장미 진행 가이드 (꽃봉오리) ---
-    _, img_col, _ = st.columns([1, 0.4, 1])
+    _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/5xsSsqX5/IMG-0209.jpg", use_container_width=True)
+        st.image("https://i.ibb.co/5xsSsqX5/IMG-0209.jpg", width=70)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>1 / 3 단계</p>", unsafe_allow_html=True)
     # -----------------------------------
     
@@ -396,9 +396,9 @@ def render_adj_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
     # --- 장미 진행 가이드 (개화 중) ---
-    _, img_col, _ = st.columns([1, 0.4, 1])
+    _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/27cPzfYm/IMG-0210.jpg", use_container_width=True)
+        st.image("https://i.ibb.co/27cPzfYm/IMG-0210.jpg", width=70)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>2 / 3 단계</p>", unsafe_allow_html=True)
     # -----------------------------------
     
@@ -424,9 +424,9 @@ def render_noun_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
     # --- 장미 진행 가이드 (만개) ---
-    _, img_col, _ = st.columns([1, 0.4, 1])
+    _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", use_container_width=True)
+        st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", use_container_width=70)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>3 / 3 단계</p>", unsafe_allow_html=True)
     # -----------------------------------
     
