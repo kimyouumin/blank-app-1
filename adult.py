@@ -52,7 +52,7 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
-        "color": "rgba(255, 255, 255, 0.8)",      # 원래 장미 색상(흰색) + 투명도 0.7
+        "color": "rgba(255, 255, 255, 0.9)",      # 원래 장미 색상(흰색) + 투명도 0.7
         "text_color": "#2C6B37",                  # 원래 책갈피 배경색(초록색)
         "bg_img": "https://i.ibb.co/sdL17hZD/IMG-0215.png"
     },
