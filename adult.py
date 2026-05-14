@@ -472,7 +472,6 @@ def render_result_page():
             
     st.markdown("<br>", unsafe_allow_html=True)
     # 가치관, 형용사, 명사가 모두 포함된 응원 문구
-    if st.session_state.noun == '' or '';
     st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b>을 응원합니다!</h3>", unsafe_allow_html=True)
     show_roses()
     
