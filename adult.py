@@ -44,32 +44,32 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image":"https://i.ibb.co/Y74nCHLQ/Talk-File.png", 
-        "color": "rgba(255, 245, 204, 0.8)",      # 반전: 연한 노란색 (장미 색상 베이스)
-        "text_color": "#1E3A8A",                  # 반전: 진한 파란색 글씨 (원래 배경색)
+        "color": "rgba(240, 208, 16, 0.7)",       # 원래 장미 색상(노란색) + 투명도 0.7
+        "text_color": "#3962AD",                  # 원래 책갈피 배경색(파란색)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "가능성": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
-        "color": "rgba(253, 245, 230, 0.8)",      # 반전: 아이보리/연한 베이지 (장미 색상 베이스)
-        "text_color": "#166534",                  # 반전: 진한 초록색 글씨 (원래 배경색)
+        "color": "rgba(255, 255, 255, 0.7)",      # 원래 장미 색상(흰색) + 투명도 0.7
+        "text_color": "#2C6B37",                  # 원래 책갈피 배경색(초록색)
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
-        "color": "rgba(255, 235, 235, 0.8)",      # 반전: 연한 붉은색/핑크 (장미 색상 베이스)
-        "text_color": "#92400E",                  # 반전: 진한 앰버/머스터드 갈색 글씨 (원래 배경색 느낌)
+        "color": "rgba(120, 24, 22, 0.7)",        # 원래 장미 색상(검붉은색) + 투명도 0.7
+        "text_color": "#EAD531",                  # 원래 책갈피 배경색(노란색)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "비상": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
         "image": "https://i.ibb.co/KZJpbst/Talk-File.png",
-        "color": "rgba(235, 244, 255, 0.8)",      # 반전: 연한 하늘색/아이스 블루 (장미 색상 베이스)
-        "text_color": "#9D174D",                  # 반전: 진한 자줏빛 핑크색 글씨 (원래 배경색)
+        "color": "rgba(16, 29, 56, 0.7)",         # 원래 장미 색상(남색) + 투명도 0.7
+        "text_color": "#EAAAC9",                  # 원래 책갈피 배경색(분홍색)
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
     },
 }
