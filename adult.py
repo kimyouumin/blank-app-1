@@ -44,7 +44,7 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image":"https://i.ibb.co/Y74nCHLQ/Talk-File.png", 
-        "color": "rgba(240, 208, 16, 0.7)",       # 원래 장미 색상(노란색) + 투명도 0.7
+        "color": "rgba(240, 208, 16, 0.9)",       # 원래 장미 색상(노란색) + 투명도 0.7
         "text_color": "#3962AD",                  # 원래 책갈피 배경색(파란색)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
@@ -52,7 +52,7 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
-        "color": "rgba(255, 255, 255, 0.8)",      # 원래 장미 색상(흰색) + 투명도 0.7
+        "color": "rgba(255, 255, 255, 0.9)",      # 원래 장미 색상(흰색) + 투명도 0.7
         "text_color": "#2C6B37",                  # 원래 책갈피 배경색(초록색)
         "bg_img": "https://i.ibb.co/sdL17hZD/IMG-0215.png"
     },
@@ -60,7 +60,7 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
-        "color": "rgba(120, 24, 22, 0.7)",        # 원래 장미 색상(검붉은색) + 투명도 0.7
+        "color": "rgba(120, 24, 22, 0.9)",        # 원래 장미 색상(검붉은색) + 투명도 0.7
         "text_color": "#EAD531",                  # 원래 책갈피 배경색(노란색)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
