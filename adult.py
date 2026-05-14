@@ -339,7 +339,14 @@ def render_home_page():
 def render_value_page():
     """새로 추가된 가치관 선택 페이지"""
     apply_card_css()
-    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- 장미 진행 가이드 (꽃봉오리) ---
+    _, img_col, _ = st.columns([1, 0.4, 1])
+    with img_col:
+        st.image("IMG_0209.jpeg", use_container_width=True)
+        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>1 / 3 단계</p>", unsafe_allow_html=True)
+    # -----------------------------------
     
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신이 중요하게 생각하는 가치는 무엇인가요?</h3>", unsafe_allow_html=True)
     st.markdown("""
@@ -387,6 +394,13 @@ def render_value_page():
 def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- 장미 진행 가이드 (개화 중) ---
+    _, img_col, _ = st.columns([1, 0.4, 1])
+    with img_col:
+        st.image("IMG_0210.jpeg", use_container_width=True)
+        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>2 / 3 단계</p>", unsafe_allow_html=True)
+    # -----------------------------------
     
     st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는<br>형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
@@ -407,7 +421,14 @@ def render_adj_page():
 
 def render_noun_page():
     apply_card_css()
-    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- 장미 진행 가이드 (만개) ---
+    _, img_col, _ = st.columns([1, 0.4, 1])
+    with img_col:
+        st.image("IMG_0211.jpeg", use_container_width=True)
+        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>3 / 3 단계</p>", unsafe_allow_html=True)
+    # -----------------------------------
     
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
     st.markdown("""
