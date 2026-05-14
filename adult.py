@@ -345,7 +345,12 @@ def render_value_page():
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
         st.image("https://i.ibb.co/5xsSsqX5/IMG-0209.jpg", width=70)
-        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>1 / 3 단계</p>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <img src="https://i.ibb.co/5xsSsqX5/IMG-0209.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
+            <p style='color: #94A3B8; font-size: 13px; margin: 0;'>1 / 3 단계</p>
+        </div>
+    """, unsafe_allow_html=True)
     # -----------------------------------
     
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신이 중요하게 생각하는 가치는 무엇인가요?</h3>", unsafe_allow_html=True)
