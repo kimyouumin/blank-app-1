@@ -279,7 +279,26 @@ def apply_result_css(board_color, bg_url):
         }}
         </style>
     """, unsafe_allow_html=True)
-
+def show_roses():
+    # CSS를 이용해 장미 애니메이션 정의
+    st.markdown("""
+        <style>
+        @keyframes fall {
+            0% {top: -10%;}
+            100% {top: 100%;}
+        }
+        .rose {
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            font-size: 30px;
+            animation: fall 5s linear infinite;
+        }
+        </style>
+        <div class="rose" style="left: 20%;">🌹</div>
+        <div class="rose" style="left: 50%; animation-delay: 1s;">🌹</div>
+        <div class="rose" style="left: 80%; animation-delay: 2s;">🌹</div>
+    """, unsafe_allow_html=True)
 # ==========================================
 # 4. 페이지 렌더링 함수 모음
 # ==========================================
@@ -453,8 +472,9 @@ def render_result_page():
             
     st.markdown("<br>", unsafe_allow_html=True)
     # 가치관, 형용사, 명사가 모두 포함된 응원 문구
-    st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
-    st.balloons()
+    if st.session_state.noun == '' or '';
+    st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b>을 응원합니다!</h3>", unsafe_allow_html=True)
+    show_roses()
     
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
         st.session_state.clear()
@@ -482,4 +502,3 @@ def main():
 if __name__ == "__main__":
     st.set_page_config(page_title="나의 키워드", page_icon="🌹", layout="wide")
     main()
-    
