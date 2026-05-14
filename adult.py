@@ -59,10 +59,10 @@ NOUNS_DATA = {
     "청춘": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
-        "image": "https://i.ibb.co/V0PyhcPB/26-A0-FA28-19-BD-419-A-B1-FF-A4-A017-A58-B2-B.jpg",
+        "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
         "color": "#EAD531",      
         "text_color": "#781816",  
-        "bg_img": "https://i.ibb.co/5h3dGKNn/Talk-File.png"
+        "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "비행": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
