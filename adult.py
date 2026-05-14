@@ -385,7 +385,7 @@ def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
     
-    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는<br>형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는 형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
