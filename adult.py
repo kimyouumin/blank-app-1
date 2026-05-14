@@ -44,32 +44,32 @@ NOUNS_DATA = {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image": "rose1.png", 
-        "color": "#3962AD",       # PDF 배경색 (파란색)
-        "text_color": "#F0D010",  # PDF 장미/포인트색 (노란색)
+        "color": "rgba(173, 216, 230, 0.7)",       # 이미지 참고: 연한 하늘색 (투명도 30%)
+        "text_color": "#1E3A8A",  # 진한 파란색 글씨
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "가능성": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "rose2.png", 
-        "color": "#2C6B37",       # PDF 배경색 (초록색)
-        "text_color": "#FFFFFF",  # PDF 장미/포인트색 (흰색)
+        "color": "rgba(167, 211, 176, 0.7)",       # 이미지 참고: 연한 민트/그린 (투명도 30%)
+        "text_color": "#166534",  # 진한 초록색 글씨
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
-        "color": "#EAD531",      
-        "text_color": "#781816",  
+        "color": "rgba(255, 250, 205, 0.7)",       # 이미지 참고: 연한 크림/노랑 (투명도 30%)
+        "text_color": "#781816",  # 기존 유지 (잘 어울림)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
     "비행": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
         "image": "https://i.ibb.co/nqXqPQp9/IMG-0196.png", 
-        "color": "#EAAAC9",       # 비상 PDF 배경색 (분홍색)
-        "text_color": "#101D38",  # 비상 PDF 장미/포인트색 (남색)
+        "color": "rgba(246, 214, 224, 0.7)",       # 이미지 참고: 연한 핑크 (투명도 30%)
+        "text_color": "#101D38",  # 기존 유지 (잘 어울림)
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
     },
 }
@@ -260,11 +260,14 @@ def apply_result_css(board_color, bg_url, text_color):
             background-position: center; background-attachment: fixed;
         }}
         .block-container {{
-            background-color: {board_color}; border-radius: 30px;
+            /* 배경색에 이미 rgba와 투명도가 포함되어 있습니다 */
+            background-color: {board_color}; 
+            border-radius: 30px;
             padding: 50px 30px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); 
             max-width: 850px !important; 
             margin-top: 80px;
             text-align: center; color: {text_color};
+            /* 보드 내부 요소들의 글자색 강제 적용 */
         }}
         .block-container h1, .block-container h3 {{
             color: {text_color} !important;
@@ -385,7 +388,7 @@ def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
     
-    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는 형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는<br>형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
@@ -452,7 +455,7 @@ def render_result_page():
     # 배경색과 글자색 인자를 모두 전달
     apply_result_css(data["color"], data["bg_img"], data.get("text_color", "#333"))
     
-    st.markdown(f"<h1 style='text-align: center; color: {data['text_color']};'>🌹 당신을 위한 한 마디 🌹</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center;'>🌹 당신을 위한 한 마디 🌹</h1>", unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
@@ -461,7 +464,7 @@ def render_result_page():
             
     st.markdown("<br>", unsafe_allow_html=True)
     # 가치관, 형용사, 명사가 모두 포함된 응원 문구
-    st.markdown(f"<h3 style='text-align: center; color: {data['text_color']};'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
     st.balloons()
     
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
