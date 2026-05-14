@@ -43,7 +43,7 @@ NOUNS_DATA = {
     "첫걸음": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
-        "image": "rose1.png", 
+        "image":"https://i.ibb.co/Y74nCHLQ/Talk-File.png", 
         "color": "rgba(173, 216, 230, 0.8)",       # 이미지 참고: 연한 하늘색 (투명도 30%)
         "text_color": "#1E3A8A",  # 진한 파란색 글씨
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
@@ -51,7 +51,7 @@ NOUNS_DATA = {
     "가능성": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
-        "image": "rose2.png", 
+        "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
         "color": "rgba(167, 211, 176, 0.8)",       # 이미지 참고: 연한 민트/그린 (투명도 30%)
         "text_color": "#ffffff",  # 하얀색 글씨
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
