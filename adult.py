@@ -404,7 +404,12 @@ def render_adj_page():
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
         st.image("https://i.ibb.co/27cPzfYm/IMG-0210.jpg", width=70)
-        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>2 / 3 단계</p>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <img src="https://i.ibb.co/27cPzfYm/IMG-0210.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
+            <p style='color: #94A3B8; font-size: 13px; margin: 0;'>2 / 3 단계</p>
+        </div>
+    """, unsafe_allow_html=True)
     # -----------------------------------
     
     st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는 형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
@@ -432,7 +437,12 @@ def render_noun_page():
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
         st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", width=70)
-        st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>3 / 3 단계</p>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <img src="https://i.ibb.co/MD31QLnv/IMG-0211.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
+            <p style='color: #94A3B8; font-size: 13px; margin: 0;'>3 / 3 단계</p>
+        </div>
+    """, unsafe_allow_html=True)
     # -----------------------------------
     
     st.markdown("<h3 style='text-align: center; font-weight: 600; color: #FFFFFF;'>당신에게 어울리는 키워드예요</h3>", unsafe_allow_html=True)
