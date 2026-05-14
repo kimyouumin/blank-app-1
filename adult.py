@@ -57,11 +57,11 @@ NOUNS_DATA = {
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/V0PyhcPB/26-A0-FA28-19-BD-419-A-B1-FF-A4-A017-A58-B2-B.jpg",
-        "color": "#EAD531",       # PDF 배경색 (노란색)
-        "text_color": "#781816",  # PDF 장미/포인트색 (검붉은색)
+        "color": "#EAD531",      
+        "text_color": "#781816",  
         "bg_img": "https://i.ibb.co/XZdyVkRs/0-E1-BEFDC-5578-444-C-8288-F80-DB270-C158.png"
     },
     "비행": {
