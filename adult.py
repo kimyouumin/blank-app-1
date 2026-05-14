@@ -53,7 +53,7 @@ NOUNS_DATA = {
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "rose2.png", 
         "color": "rgba(167, 211, 176, 0.8)",       # 이미지 참고: 연한 민트/그린 (투명도 30%)
-        "text_color": "#166534",  # 진한 초록색 글씨
+        "text_color": "#ffffff",  # 진한 초록색 글씨
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
