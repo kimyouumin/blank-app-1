@@ -403,7 +403,6 @@ def render_adj_page():
     # --- 장미 진행 가이드 (개화 중) ---
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/27cPzfYm/IMG-0210.jpg", width=70)
         st.markdown("""
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
             <img src="https://i.ibb.co/27cPzfYm/IMG-0210.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
@@ -436,7 +435,6 @@ def render_noun_page():
     # --- 장미 진행 가이드 (만개) ---
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", width=70)
         st.markdown("""
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
             <img src="https://i.ibb.co/MD31QLnv/IMG-0211.jpg" style="width: 45px; height: auto; margin-bottom: 5px;">
