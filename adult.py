@@ -54,7 +54,7 @@ NOUNS_DATA = {
         "image": "https://i.ibb.co/GvgnR60T/Talk-File.png",
         "color": "rgba(255, 255, 255, 0.7)",      # 원래 장미 색상(흰색) + 투명도 0.7
         "text_color": "#2C6B37",                  # 원래 책갈피 배경색(초록색)
-        "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
+        "bg_img": "https://i.ibb.co/zTSy312H/IMG-0213.png"
     },
     "청춘": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
