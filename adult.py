@@ -8,27 +8,27 @@ import streamlit as st
 VALUES = ["용기", "성장", "자유", "도전", "연결", "희망"]
 VALUES_DATA = {
     "용기": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/JFRyG4XF/courage.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘"
     },
     "성장": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/yn47G1Jd/grow.png",
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루"
     },
     "자유": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/vxD8zR3v/freedom.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리"
     },
     "도전": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/fYPfjC21/challenge.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음"
     },
     "연결": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/S4fgRTkQ/link.png",
         "desc": "함께하는 순간들이<br>만들어가는<br>따뜻한 관계"
     },
     "희망": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/8DvMs44h/hope.png",
         "desc": "지금 이 순간에도<br>피어나는<br>작은 가능성"
     }
 }
@@ -378,7 +378,7 @@ def render_adj_page():
     apply_adj_css()
     st.markdown("<br>", unsafe_allow_html=True)
     
-    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는다고 생각되는 형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는<br>형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
@@ -453,7 +453,7 @@ def render_result_page():
             
     st.markdown("<br>", unsafe_allow_html=True)
     # 가치관, 형용사, 명사가 모두 포함된 응원 문구
-    st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치를 담은 <br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; color: #333;'><b>{st.session_state.name}</b>님의 <b>{st.session_state.value}</b>의 가치가 담긴<br><br><b>{st.session_state.adj} {st.session_state.noun}</b> 응원합니다!</h3>", unsafe_allow_html=True)
     st.balloons()
     
     if st.button("🔄 처음부터 다시하기", key="restart_btn"):
