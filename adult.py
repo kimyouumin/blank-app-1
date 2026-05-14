@@ -402,7 +402,7 @@ def render_adj_page():
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>2 / 3 단계</p>", unsafe_allow_html=True)
     # -----------------------------------
     
-    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는<br>형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>✨스물에 가장 걸맞는 형용사를 골라주세요 ✨</h2>", unsafe_allow_html=True)
     st.write("---")
     
     cols = st.columns(3)
@@ -426,7 +426,7 @@ def render_noun_page():
     # --- 장미 진행 가이드 (만개) ---
     _, img_col, _ = st.columns([1, 0.2, 1])
     with img_col:
-        st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", use_container_width=70)
+        st.image("https://i.ibb.co/MD31QLnv/IMG-0211.jpg", width=70)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>3 / 3 단계</p>", unsafe_allow_html=True)
     # -----------------------------------
     
