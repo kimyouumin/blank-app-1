@@ -298,7 +298,7 @@ def render_home_page():
     apply_home_css()
     st.markdown("<br><br><br>", unsafe_allow_html=True)
     
-    col1, spacer, col2 = st.columns([1, 0, 1])
+    col1, spacer, col2 = st.columns([1, 0.1, 1])
     with col1:
         st.markdown("<div class='sub-title'>성년의 날, 나에게 전하는 한 문장</div>", unsafe_allow_html=True)
         st.markdown("<div class='main-title'>나의 키워드</div>", unsafe_allow_html=True)
@@ -342,7 +342,7 @@ def render_value_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
     # --- 장미 진행 가이드 (꽃봉오리) ---
-    _, img_col, _ = st.columns([1, 0, 1])
+    _, img_col, _ = st.columns([1, 0.1, 1])
     with img_col:
         st.image("https://i.ibb.co/5xsSsqX5/IMG-0209.jpg", width=50)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>1 / 3 단계</p>", unsafe_allow_html=True)
@@ -396,7 +396,7 @@ def render_adj_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
     # --- 장미 진행 가이드 (개화 중) ---
-    _, img_col, _ = st.columns([1, 0, 1])
+    _, img_col, _ = st.columns([1, 0.1, 1])
     with img_col:
         st.image("https://i.ibb.co/27cPzfYm/IMG-0210.jpg", width=50)
         st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 13px; margin-top: -5px;'>2 / 3 단계</p>", unsafe_allow_html=True)
