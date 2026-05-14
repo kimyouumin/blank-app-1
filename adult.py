@@ -38,7 +38,7 @@ ADJ_WORDS_LIST = [
     "푸르른", "나만의", "성장의", "무한한", "눈부신", "새로운"
 ]
 
-NOUNS = ["첫걸음", "가능성", "청춘", "비행"]
+NOUNS = ["첫걸음", "가능성", "청춘", "비상"]
 NOUNS_DATA = {
     "첫걸음": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
@@ -53,7 +53,7 @@ NOUNS_DATA = {
         "desc": "작은 순간들이<br>모여 만드는<br>단단한 하루",
         "image": "rose2.png", 
         "color": "rgba(167, 211, 176, 0.8)",       # 이미지 참고: 연한 민트/그린 (투명도 30%)
-        "text_color": "#ffffff",  # 진한 초록색 글씨
+        "text_color": "#ffffff",  # 하얀색 글씨
         "bg_img": "https://i.ibb.co/p6z6mwYp/865-AFB2-D-5-E7-F-4822-A8-B3-4-C26-B55929-D7.png"
     },
     "청춘": {
@@ -64,10 +64,10 @@ NOUNS_DATA = {
         "text_color": "#781816",  # 기존 유지 (잘 어울림)
         "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
     },
-    "비행": {
+    "비상": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
-        "image": "https://i.ibb.co/nqXqPQp9/IMG-0196.png", 
+        "image": "https://i.ibb.co/KZJpbst/Talk-File.png" 
         "color": "rgba(246, 214, 224, 0.8)",       # 이미지 참고: 연한 핑크 (투명도 30%)
         "text_color": "#101D38",  # 기존 유지 (잘 어울림)
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
