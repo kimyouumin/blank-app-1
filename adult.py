@@ -41,7 +41,7 @@ ADJ_WORDS_LIST = [
 NOUNS = ["첫걸음", "가능성", "청춘", "비상"]
 NOUNS_DATA = {
     "첫걸음": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/vxXb6qr3/80155699-F795-4231-87-EF-5-A94-F9-B88455.png",
         "desc": "두려움 속에서도<br>한 걸음 앞으로<br>나아가는 힘",
         "image":"https://i.ibb.co/Y74nCHLQ/Talk-File.png", 
         "color": "rgba(240, 208, 16, 0.9)",       # 원래 장미 색상
