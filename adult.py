@@ -57,7 +57,7 @@ NOUNS_DATA = {
         "bg_img": "https://i.ibb.co/sdL17hZD/IMG-0215.png"
     },
     "청춘": {
-        "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
+        "icon": "https://i.ibb.co/V0YYtKps/6-F7-B3-B88-2-C79-48-FC-AE3-D-C2397-C63-C62-D.png",
         "desc": "나답게 선택하고<br>나아갈 수 있는<br>당신의 권리",
         "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
         "color": "rgba(120, 24, 22, 0.9)",        # 원래 장미 색상(검붉은색) 
