@@ -67,7 +67,7 @@ NOUNS_DATA = {
     "비상": {
         "icon": "https://cdn-icons-png.flaticon.com/512/2926/2926750.png",
         "desc": "새로운 길 위에서<br>스스로를 믿고<br>시작하는 마음",
-        "image": "https://i.ibb.co/KZJpbst/Talk-File.png" 
+        "image": "https://i.ibb.co/KZJpbst/Talk-File.png",
         "color": "rgba(246, 214, 224, 0.8)",       # 이미지 참고: 연한 핑크 (투명도 30%)
         "text_color": "#101D38",  # 기존 유지 (잘 어울림)
         "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
