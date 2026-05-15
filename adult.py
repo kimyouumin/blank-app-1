@@ -46,7 +46,7 @@ NOUNS_DATA = {
         "image":"https://i.ibb.co/Y74nCHLQ/Talk-File.png", 
         "color": "rgba(240, 208, 16, 0.9)",       # 원래 장미 색상
         "text_color": "#3962AD",                  # 원래 책갈피 배경색(파란색)
-        "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
+        "bg_img": "https://i.ibb.co/svNWnR89/firststep.png"
     },
     "가능성": {
         "icon": "https://i.ibb.co/sJvzv6Tm/B9-AAD50-B-C09-F-465-A-ABF4-18-E186-D8-E65-B.png",
@@ -62,7 +62,7 @@ NOUNS_DATA = {
         "image": "https://i.ibb.co/5h3dGKNn/Talk-File.png",
         "color": "rgba(120, 24, 22, 0.9)",        # 원래 장미 색상(검붉은색) 
         "text_color": "#EAD531",                  # 원래 책갈피 배경색(노란색)
-        "bg_img": "https://i.ibb.co/zHCtzXZt/D14-E4-DA9-02-C9-4367-BC45-5-C1-B0-AC1-AC70.png"
+        "bg_img": "https://i.ibb.co/jvrxCPpx/youth.png"
     },
     "비상": {
         "icon": "https://i.ibb.co/QF4qQRBm/D5-D9-CEEB-936-C-4687-9215-4042-E53-A0-F1-F.png",
@@ -70,7 +70,7 @@ NOUNS_DATA = {
         "image": "https://i.ibb.co/KZJpbst/Talk-File.png",
         "color": "rgba(16, 29, 56, 0.9)",         # 원래 장미 색상(남색) 
         "text_color": "#EAAAC9",                  # 원래 책갈피 배경색(분홍색)
-        "bg_img": "https://i.ibb.co/WWpvTXGs/2716-A5-E8-6670-4233-B564-1-DD0-B5-AA645-E.png"
+        "bg_img": "https://i.ibb.co/3ygK4PQ5/bisang.png"
     },
 }
 
