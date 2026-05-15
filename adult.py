@@ -331,8 +331,7 @@ def render_home_page():
         
         st.markdown("""
             <div style="display: flex; justify-content: center;">
-                <img src="https://i.ibb.co/zTxK90QJ/IMG-0203.jpg" 
-                     style="width: 480px; height: 320px; object-fit: cover;">
+                <img src="https://i.ibb.co/zTxK90QJ/IMG-0203.jpg">
             </div>
         """, unsafe_allow_html=True)
 
